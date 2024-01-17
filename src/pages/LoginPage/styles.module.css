@@ -14,8 +14,8 @@
 
 .form_geral_login_page{
   background-color: rgba(71, 38, 71, 0.6);
-  height: 50vh;
-  width: 40vw;
+  min-height: 52vh;
+  min-width: 40vw;
 }
 
 .form_titulo_login_page{
@@ -43,7 +43,7 @@
   border: none;
   border-bottom: 2px solid white;
   font-size: 20px;
-  padding: 6px;
+  padding: 4px;
   color: white;
   outline: none;
 }
@@ -54,18 +54,27 @@
   color: white;
   font-size: 20px;
   font-weight: 400;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   cursor: pointer;
 }
 
-.form_login_page div{
+.form_login_page div:first-of-type{
   display: flex;
   flex-direction: column;
 }
 
-.form_login_page div a{
+.form_login_page div:first-of-type a{
   text-align: center;
-  color: white;
+  color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
 }
 
+.form_login_page div:last-of-type{
+  display: flex;
+  color: white;
+  margin-top: 10px;
+}
+
+.form_login_page div:last-of-type a{
+  color: white;
+}
