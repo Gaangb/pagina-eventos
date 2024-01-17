@@ -1,0 +1,71 @@
+.container_geral_login_page {
+  background: url("../../assets/background-login.jpg");
+  height: 100vh;
+  background-size: cover;
+}
+
+.container_login_page{
+  background-color: rgba(238, 130, 238, 0.4);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_geral_login_page{
+  background-color: rgba(71, 38, 71, 0.6);
+  height: 50vh;
+  width: 40vw;
+}
+
+.form_titulo_login_page{
+  background-color: rgba(71, 38, 71);
+  height: 12vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_login_page{
+  display: flex;
+  flex-direction: column;
+  padding: 20px 50px;
+}
+
+.form_login_page input, button{
+  height: 50px;
+}
+
+.form_login_page input{
+  margin-bottom: 50px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  font-size: 20px;
+  padding: 6px;
+  color: white;
+  outline: none;
+}
+
+.form_login_page button{
+  background-color: rgba(238, 130, 238);
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.form_login_page div{
+  display: flex;
+  flex-direction: column;
+}
+
+.form_login_page div a{
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+

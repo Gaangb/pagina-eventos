@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
-
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { LoginPage } from './pages/LoginPage'
 import './App.css'
 
 function App() {
@@ -10,8 +10,8 @@ function App() {
     <Router>
       <div className="container_geral">
         <Routes>
-          <Route path="/login" element={<LoginPage/>}/>
-        </Routes> 
+          <Route path="/" element={<LoginPage />} />
+        </Routes>
       </div>
     </Router>
   )
