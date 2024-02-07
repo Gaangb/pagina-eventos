@@ -5,6 +5,7 @@ import { RegisterPage } from './pages/RegisterPage'
 import './App.css'
 import { ResetPage } from './pages/ResetPage'
 import { EventProvider } from './hooks/useEventsBuilder'
+import { EventsPage } from './pages/EventsPage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/reset" element={<ResetPage />} />
+            <Route path="/events" element={<EventsPage />} />
           </Routes>
         </EventProvider>
       </div>
