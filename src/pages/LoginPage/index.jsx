@@ -13,10 +13,12 @@ export function LoginPage() {
     const usuarioValido = usuarios.find(user => user.email === login.email && user.senha === login.senha);
 
     if (usuarioValido) {
-      console.log('credenciais corretas')
+      location.href = '/events'
+      
     } else {
-      console.log('Credenciais inválidas');
+      alert("Credenciais inválidas");
     }
+    setLogin({email: '', senha: ''})
   };
 
   console.log(login)
@@ -28,8 +30,8 @@ export function LoginPage() {
             <h1>Bem vindo de volta!</h1>
           </div>
           <div className={styles.form_login_page}>
-            <input type="email" name="email" id="" placeholder="Digite seu email" onChange={(e) => setLogin({...login, email: e.target.value})}/>
-            <input type="password" name="senha" id="" placeholder="Digite sua senha" onChange={(e) => setLogin({... login, senha: e.target.value})}/>
+            <input value={login.email} type="email" name="email" id="" placeholder="Digite seu email" onChange={(e) => setLogin({...login, email: e.target.value})}/>
+            <input value={login.senha} type="password" name="senha" id="" placeholder="Digite sua senha" onChange={(e) => setLogin({... login, senha: e.target.value})}/>
             <div>
               <button type="submit">Acessar Conta</button>
               <a href="/reset">Esqueci minha senha</a>
