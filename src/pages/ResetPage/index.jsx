@@ -22,12 +22,6 @@ export function ResetPage() {
         }
     }
 
-    // useEffect(() => {
-    //     if (!isRight) {
-    //       alert("Credenciais inválidas");
-    //     }
-    //   }, [handleSubmit]);
-
     const handleSavePassword = (event) => {
         event.preventDefault();
         console.log('Credenciais inválidas');
@@ -62,7 +56,7 @@ export function ResetPage() {
                         }
 
                         <button type="submit">Confirmar</button>
-                        <a href="/">Cancelar</a>
+                        <a href="/login">Cancelar</a>
                     </div>
                 </form>
             </div>
