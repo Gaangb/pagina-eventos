@@ -1,0 +1,34 @@
+.container_geral_events_page{
+  width: 28vw;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 6px;
+}
+
+.container_geral_events_page > div {
+  display: flex;
+  justify-content: space-around;
+}
+
+.container_titulo_events_page{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.container_geral_events_page > div > img{
+  max-width:200px;
+  max-height:150px;
+  width: auto;
+  height: auto;
+  margin-top: 10px;
+}
+
+.container_geral_events_page > p{
+  margin: 20px 20px 20px 34px;
+}
