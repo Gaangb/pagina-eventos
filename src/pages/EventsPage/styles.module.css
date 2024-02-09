@@ -4,7 +4,7 @@
 }
 
 .container_navbar_events_page{
-    background-color: rgba(71, 38, 71, 0.6);
+    background-color: rgba(71, 38, 71);
     height: 8vh;
     display: flex;
 }
@@ -44,4 +44,13 @@
     cursor: pointer;
     text-decoration: none;
     border-bottom: 1px solid white;
+}
+
+.container_events_page > div{
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-top: 50px;
+    width: 90%;
+    height: 80%;
 }
