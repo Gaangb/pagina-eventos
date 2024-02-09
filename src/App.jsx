@@ -6,9 +6,9 @@ import './App.css'
 import { ResetPage } from './pages/ResetPage'
 import { EventProvider } from './hooks/useEventsBuilder'
 import { EventsPage } from './pages/EventsPage'
+import { CreateEvent } from './pages/CreateEvent'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <Router>
@@ -19,6 +19,7 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/reset" element={<ResetPage />} />
             <Route path="/events" element={<EventsPage />} />
+            <Route path="/create-event" element={<CreateEvent />} />
           </Routes>
         </EventProvider>
       </div>
