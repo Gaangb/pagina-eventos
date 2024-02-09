@@ -1,3 +1,4 @@
+import CardEvent from "../../components/CardEvent";
 import styles from "./styles.module.css";
 
 export function EventsPage() {
@@ -7,6 +8,9 @@ export function EventsPage() {
                 <input type="text" name="" id="" placeholder="Pesquise" />
                 <a href=""><p>minha conta</p></a>
                 <button>Sair</button>
+            </div>
+            <div>
+                <CardEvent />
             </div>
         </section>
     );
