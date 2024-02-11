@@ -30,8 +30,16 @@ export function EventProvider({ children }) {
       }
 
   ])
+
+  const [showForm, setShowForm] = useState(false)
+
+  const toggleForm = (e) => {
+    e.preventDefault()
+    setShowForm(!showForm)
+  }
+
   return (
-    <EventContext.Provider value={{ usuarios, setUsuarios, eventos, setEventos }}>
+    <EventContext.Provider value={{ usuarios, setUsuarios, eventos, setEventos, showForm, setShowForm, toggleForm }}>
       {children}
     </EventContext.Provider>
   );
