@@ -1,0 +1,54 @@
+.container_create_event_page{
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(71, 38, 71, 0.6);
+    width: 70%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.form_titulo_create_event_page{
+    height: 8vh;
+    width: 100%;
+    color: white;
+}
+
+.form_geral_create_event_page{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.form_create_event_page > div {
+    display: flex;
+}
+.form_create_event_page{
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    width: 100%;
+    margin: auto;
+}
+
+.input_create_event {
+    margin: 20px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    font-size: 20px;
+    padding: 4px;
+    color: white;
+    outline: none;
+    margin: auto;
+    width: 80%;
+}
