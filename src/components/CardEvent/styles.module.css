@@ -1,18 +1,20 @@
 .container_geral_events_page{
-  width: 28vw;
+  width: 26vw;
   height: 30vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.4);
-  margin-top: 10px;
-  margin-left: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
   border-radius: 6px;
 }
 
-.container_geral_events_page > div {
+.container_geral_events_page > div:first-of-type {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin: 0px 40px;
 }
 
 .container_titulo_events_page{
@@ -29,6 +31,9 @@
   margin-top: 10px;
 }
 
-.container_geral_events_page > p{
-  margin: 20px 20px 20px 34px;
+.container_geral_events_page > div:last-child{
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 40px;
+  margin-top: 30px;
 }
