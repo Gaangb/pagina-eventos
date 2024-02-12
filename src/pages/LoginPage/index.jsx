@@ -5,7 +5,7 @@ import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 export function LoginPage() {
   const [login, setLogin] = useState({email: '', senha: ''})
 
-  const { usuarios } = useEventsBuilder();
+  const { usuarios, isLogged, setIsLogged, showLogo } = useEventsBuilder();
   
   const handleSubmit = (event) => {
   
@@ -13,7 +13,9 @@ export function LoginPage() {
     const usuarioValido = usuarios.find(user => user.email === login.email && user.senha === login.senha);
 
     if (usuarioValido) {
-      location.href = '/events'
+      setIsLogged(true)
+      localStorage.setItem("loggedInUser", JSON.stringify(usuarioValido));
+      location.href = '/'
       
     } else {
       alert("Credenciais inválidas");
@@ -21,10 +23,10 @@ export function LoginPage() {
     setLogin({email: '', senha: ''})
   };
 
-  console.log(login)
   return (
     <section className={styles.container_geral_login_page}>
       <div className={styles.container_login_page}>
+      {showLogo}
         <form onSubmit={handleSubmit} action="submit" className={styles.form_geral_login_page}>
           <div className={styles.form_titulo_login_page}>
             <h1>Bem vindo de volta!</h1>
