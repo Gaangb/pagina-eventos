@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import styles from "./styles.module.css";
+import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 
 export function ResetPage() {
+    const { usuarios, setUsuarios, showLogo } = useEventsBuilder();
     const [credenciais, setCredenciais] = useState({ email: '', cpf: '' })
     const [isRight, setIsRight] = useState(false)
 
-    let usuarios = [{
-        'email': 'administrador@gmail.com',
-        'cpf': '12345678900',
-    }]
+    // let usuarios = [{
+    //     'email': 'administrador@gmail.com',
+    //     'cpf': '12345678900',
+    // }]
 
     const handleSubmit = (event) => {
 
@@ -30,6 +32,7 @@ export function ResetPage() {
     return (
         <section className={styles.container_geral_register_page}>
             <div className={styles.container_register_page}>
+                {showLogo}
                 <form onSubmit={isRight ? handleSavePassword : handleSubmit} action="submit" className={styles.form_geral_register_page}>
                     <div className={styles.form_titulo_register_page}>
                         {
