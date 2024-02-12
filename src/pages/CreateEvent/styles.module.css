@@ -1,9 +1,7 @@
 .container_create_event_page{
     position: absolute;
     z-index: 10;
-    background-color: rgba(71, 38, 71, 0.6);
     width: 70%;
-    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,29 +13,31 @@
 }
 
 .form_titulo_create_event_page{
-    height: 8vh;
-    width: 100%;
+    width: 96%;
     color: white;
+    margin-bottom: 20px;
 }
 
 .form_geral_create_event_page{
-    height: 80vh;
+    height: 60vh;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
+    background-color: rgba(71, 38, 71, 0.6);
 }
 
 .form_create_event_page > div {
     display: flex;
 }
+
 .form_create_event_page{
     display: flex;
     flex-direction: column;
     height: 60vh;
     width: 100%;
-    margin: auto;
 }
 
 .input_create_event {
@@ -50,5 +50,50 @@
     color: white;
     outline: none;
     margin: auto;
-    width: 80%;
+    width: 100%;
+}
+
+.container_input_create_event {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin: auto;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.container_input_create_event > label {
+    margin-bottom: 10px;
+}
+
+.container_description_create_event{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.container_description_create_event > label {
+    margin-bottom: 10px;
+}
+
+.container_buttons_create_event{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.container_buttons_create_event > button {
+    margin: 20px;
+    width: 40%;
+    height: 40px;
+    background-color: rgba(238, 130, 238);
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-top: 40px;
 }

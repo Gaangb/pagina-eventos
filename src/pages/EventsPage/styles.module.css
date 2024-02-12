@@ -23,17 +23,45 @@
     width: 40%;
 }
 
-.button_sair_navbar_events_page {
-    width: 70px;
+.container_navbar_events_page > button:hover {
+    border-color: rgba(238, 130, 238);
+    color: rgba(238, 130, 238)
+}
+
+.button_login_navbar_events_page {
+    width: 120px;
     height: 40px;
-    background-color: rgba(238, 130, 238);
+    background-color: transparent;
     border: none;
-    color: white;
+    color: rgba(238, 130, 238);
     font-size: 18px;
     font-weight: 400;
     cursor: pointer;
     margin: auto 0;
     margin-right: 20px;
+}
+
+.button_login_navbar_events_page:hover {
+    border-bottom: 1px solid rgba(238, 130, 238);
+    transition: 0.2s;
+}
+
+.button_sair_navbar_events_page {
+    width: 80px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    color: rgba(238, 130, 238);
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    margin: auto 0;
+    margin-right: 20px;
+}
+
+.button_sair_navbar_events_page:hover {
+    border-bottom: 1px solid rgba(238, 130, 238);
+    transition: 0.2s;
 }
 
 .button_navbar_events_page {
@@ -46,6 +74,10 @@
     color: white;
     cursor: pointer;
     margin-top: 6px;
+}
+
+.container_navbar_events_page > img {
+    cursor: pointer;
 }
 
 .container_events_page.modal_open {
@@ -67,6 +99,6 @@
     flex-wrap: wrap;
     margin: auto;
     margin-top: 50px;
-    width: 90%;
+    width: 84%;
     height: 80%;
 }
