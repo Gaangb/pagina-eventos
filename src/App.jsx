@@ -18,7 +18,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/reset" element={<ResetPage />} />
-            <Route path="/events" element={<EventsPage />} />
+            <Route path="/" element={<EventsPage />} />
             <Route path="/create-event" element={<CreateEvent />} />
           </Routes>
         </EventProvider>
