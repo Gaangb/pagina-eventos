@@ -1,11 +1,9 @@
 import CardEvent from "../../components/CardEvent";
 import styles from "./styles.module.css";
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
-import { CreateEvent } from "../../components/CreateEvent";
-import { NavBar } from "../../components/NavBar";
 import { useEffect } from "react";
 export function EventsPage() {
-  const { eventos, showForm, setEventos} = useEventsBuilder();
+  const { eventos, setEventos} = useEventsBuilder();
 
   useEffect(() => {
     if (eventos.length) {
