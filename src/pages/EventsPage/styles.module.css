@@ -1,83 +1,6 @@
 .container_geral_events_page {
     background-color: rgba(238, 130, 238);
     height: 100vh;
-    position: relative;
-}
-
-.container_navbar_events_page {
-    background-color: rgba(71, 38, 71);
-    height: 8vh;
-    display: flex;
-}
-
-.container_navbar_events_page>input {
-    margin: 20px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid white;
-    font-size: 20px;
-    padding: 4px;
-    color: white;
-    outline: none;
-    margin: auto;
-    width: 40%;
-}
-
-.container_navbar_events_page > button:hover {
-    border-color: rgba(238, 130, 238);
-    color: rgba(238, 130, 238)
-}
-
-.button_login_navbar_events_page {
-    width: 120px;
-    height: 40px;
-    background-color: transparent;
-    border: none;
-    color: rgba(238, 130, 238);
-    font-size: 18px;
-    font-weight: 400;
-    cursor: pointer;
-    margin: auto 0;
-    margin-right: 20px;
-}
-
-.button_login_navbar_events_page:hover {
-    border-bottom: 1px solid rgba(238, 130, 238);
-    transition: 0.2s;
-}
-
-.button_sair_navbar_events_page {
-    width: 80px;
-    height: 40px;
-    background-color: transparent;
-    border: none;
-    color: rgba(238, 130, 238);
-    font-size: 18px;
-    font-weight: 400;
-    cursor: pointer;
-    margin: auto 0;
-    margin-right: 20px;
-}
-
-.button_sair_navbar_events_page:hover {
-    border-bottom: 1px solid rgba(238, 130, 238);
-    transition: 0.2s;
-}
-
-.button_navbar_events_page {
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid white;
-    font-size: 18px;
-    width: 110px;
-    margin-right: 20px;
-    color: white;
-    cursor: pointer;
-    margin-top: 6px;
-}
-
-.container_navbar_events_page > img {
-    cursor: pointer;
 }
 
 .container_events_page.modal_open {
@@ -98,7 +21,17 @@
     display: flex;
     flex-wrap: wrap;
     margin: auto;
-    margin-top: 50px;
     width: 84%;
     height: 80%;
+}
+
+@media screen and (max-width: 768px) {
+    .container_cards_events_page {
+        margin-top: 0px;
+        width: 94%;
+        overflow-y: auto;
+        height: 90vh;
+        align-items: center;
+        justify-content: center;
+    }    
 }

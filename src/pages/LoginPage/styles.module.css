@@ -88,3 +88,23 @@
 .form_login_page div:last-of-type a{
   color: white;
 }
+
+@media screen and (max-width: 768px) {
+  .container_login_page > img{
+    width: 80px;
+  }
+
+  .form_geral_login_page{
+    width: 90vw;
+    height: 62vh;
+    margin-top: -10px;
+  }
+
+  .form_titulo_login_page{
+    height: 10vh;
+  }
+
+  .form_login_page{
+    padding: 20px 30px;
+  }
+}
