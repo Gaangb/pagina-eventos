@@ -1,12 +1,17 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
+import { useEffect } from "react";
 
 export function LoginPage() {
   const [login, setLogin] = useState({email: '', senha: ''})
 
-  const { usuarios, isLogged, setIsLogged, showLogo } = useEventsBuilder();
+  const { usuarios, setIsLogged, showLogo, setCustomClassNavBar } = useEventsBuilder();
   
+  useEffect(() => {
+    setCustomClassNavBar("no_show_navbar");
+  }, []);
+
   const handleSubmit = (event) => {
   
     event.preventDefault();

@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./styles.module.css";
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
+import { useEffect } from "react";
 
 export function ResetPage() {
-    const { usuarios, setUsuarios, showLogo } = useEventsBuilder();
+    const { usuarios, setUsuarios, showLogo, setCustomClassNavBar } = useEventsBuilder();
     const [credenciais, setCredenciais] = useState({ email: '', cpf: '' })
     const [isRight, setIsRight] = useState(false)
 
-    // let usuarios = [{
-    //     'email': 'administrador@gmail.com',
-    //     'cpf': '12345678900',
-    // }]
+    useEffect(() => {
+        setCustomClassNavBar("no_show_navbar");
+      }, []);
 
     const handleSubmit = (event) => {
 

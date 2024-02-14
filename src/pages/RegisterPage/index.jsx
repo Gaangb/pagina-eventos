@@ -1,12 +1,16 @@
 import styles from "./styles.module.css";
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 import { useState } from "react";
-
+import { useEffect } from "react";
 
 
 export function RegisterPage() {
   const [cadastro, setCadastro] = useState({ nome: '', cpf: '', email: '', senha: '' });
-  const { usuarios, setUsuarios, showLogo } = useEventsBuilder();
+  const { usuarios, setUsuarios, showLogo, setCustomClassNavBar } = useEventsBuilder();
+
+  useEffect(() => {
+    setCustomClassNavBar("no_show_navbar");
+  }, []);
   const handleSubmit = (event) => {
 
     event.preventDefault();
