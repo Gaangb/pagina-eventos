@@ -37,3 +37,47 @@
   margin-left: 40px;
   margin-top: 30px;
 }
+
+@media screen and (max-width: 768px) {
+  .container_geral_events_page{
+    width: 90vw;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    margin-top: 20px;
+    margin-left: 5px;
+    border-radius: 6px;
+  }
+
+  @media screen and (max-width: 768px) {
+
+    .container_geral_events_page{
+      align-items: center;
+    }
+    
+    .container_imagem_titulo_events_page{
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+
+    }
+
+    .container_titulo_events_page{
+      margin-left: 20px;
+    }
+
+    .hide_on_phone{
+      display: none;
+    }
+
+    .container_geral_events_page > div:first-of-type {
+      margin: 0px;
+    }
+
+    
+  }
+
+  
+}
