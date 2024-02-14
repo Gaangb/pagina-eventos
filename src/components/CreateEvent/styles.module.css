@@ -19,11 +19,11 @@
 }
 
 .form_geral_create_event_page{
-    height: 60vh;
+    height: 78vh;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
     background-color: rgba(71, 38, 71, 0.6);
@@ -46,14 +46,13 @@
     border: none;
     border-bottom: 2px solid white;
     font-size: 20px;
-    padding: 4px;
     color: white;
     outline: none;
     margin: auto;
     width: 100%;
 }
 
-.container_input_create_event {
+.container_input {
     display: flex;
     flex-direction: column;
     width: 45%;
@@ -62,11 +61,11 @@
     margin-bottom: 30px;
 }
 
-.container_input_create_event > label {
+.container_input > label {
     margin-bottom: 10px;
 }
 
-.container_description_create_event{
+.container_description{
     display: flex;
     flex-direction: column;
     color: white;
@@ -74,19 +73,19 @@
     margin: 0 auto;
 }
 
-.container_description_create_event > label {
+.container_description > label {
     margin-bottom: 10px;
 }
 
-.container_buttons_create_event{
+.container_buttons{
     display: flex;
     width: 100%;
-    justify-content: center;
+    justify-content: space-around;
 }
 
-.container_buttons_create_event > button {
+.container_buttons > button {
     margin: 20px;
-    width: 40%;
+    width: 30%;
     height: 40px;
     background-color: rgba(238, 130, 238);
     border: none;
@@ -96,4 +95,8 @@
     cursor: pointer;
     margin-right: 20px;
     margin-top: 40px;
+}
+
+.preview_image{
+    width: 100px;
 }
