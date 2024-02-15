@@ -37,6 +37,28 @@
   align-items: center;
 }
 
+.form_image{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 40%;
+  margin-bottom: 10px;
+}
+
+.form_image > img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.form_image > label {
+  background-color: rgba(71, 38, 71);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+
+}
+
 .form_register_page{
   display: flex;
   flex-direction: column;
