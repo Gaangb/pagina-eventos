@@ -3,6 +3,7 @@ import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 import logo from "../../assets/logo.png"
 import { CreateEvent } from "../CreateEvent";
 
+
 export function NavBar() {
     const { toggleForm, isLogged, handleLogOut, showForm, customClassNavBar } = useEventsBuilder();
 

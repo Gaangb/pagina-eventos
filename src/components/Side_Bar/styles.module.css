@@ -20,8 +20,8 @@
 
 .container_content > img {
     margin: 0 auto;
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
 }
 
@@ -31,9 +31,9 @@
     border: none;
     color: rgba(238, 130, 238);
     cursor: pointer;
+    padding: 0px 20px;
 }
 
 .container_content > button:hover{
     color : white;
 }
-
