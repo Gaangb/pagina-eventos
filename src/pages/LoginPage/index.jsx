@@ -5,7 +5,6 @@ import { useEffect } from "react";
 
 export function LoginPage() {
   const [login, setLogin] = useState({email: '', senha: ''})
-
   const { usuarios, setIsLogged, showLogo, setCustomClassNavBar } = useEventsBuilder();
   
   useEffect(() => {
