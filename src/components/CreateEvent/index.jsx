@@ -1,12 +1,40 @@
 import styles from "./styles.module.css";
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 
 export function CreateEvent() {
 
   const { eventos, setEventos, toggleForm } = useEventsBuilder();
+
+  const [cadastro, setCadastro] = useState({
+    id: 0,
+    nome: '',
+    cpf: '',
+    nome_estabelecimento: '',
+    email: '',
+    senha: '',
+    imagem: ""
+});
+
+useEffect(() => {
+    const loggedInUserJSON = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (loggedInUserJSON) {
+        setCadastro({
+            id: loggedInUserJSON.id,
+            nome: loggedInUserJSON.nome,
+            cpf: loggedInUserJSON.cpf,
+            nome_estabelecimento: loggedInUserJSON.nome_estabelecimento,
+            email: loggedInUserJSON.email,
+            senha: loggedInUserJSON.senha,
+            imagem: loggedInUserJSON.imagem
+        });
+    }
+}, []);
+
   const [cadastroEvento, setCadastroEvento] = useState({
     nome: "",
+    criador: 0,
     local: "",
     data: "",
     horario: "",
@@ -28,6 +56,7 @@ export function CreateEvent() {
 
       const novoEvento = {
         id: eventos.length + 1,
+        criador: cadastro.id,
         nome: cadastroEvento.nome,
         local: cadastroEvento.local,
         data: cadastroEvento.data,
