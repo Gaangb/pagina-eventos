@@ -1,3 +1,5 @@
+export const loggedInUserJSON = JSON.parse(localStorage.getItem('loggedInUser'));
+
 export const eventosPreDefinidos = [
     {
         id: 1,
