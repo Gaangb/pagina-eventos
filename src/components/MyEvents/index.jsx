@@ -32,12 +32,15 @@ export function MyEvents() {
     }, []);
 
     const eventosFiltrados = eventos.filter(evento => evento.criador === cadastro.id);
-    
+
     return (
-        <div className={styles.container_content}>
-            {eventosFiltrados.map((event, index) => (
-                <CardEvent key={index} {...event} />
-            ))}
+        <div className={styles.container_geral}>
+            <h1><ion-icon name="ticket-outline"></ion-icon>Meus Eventos</h1>
+            <div className={styles.container_content}>
+                {eventosFiltrados.map((event, index) => (
+                    <CardEvent key={index} {...event} />
+                ))}
+            </div>
         </div>
     )
 }
