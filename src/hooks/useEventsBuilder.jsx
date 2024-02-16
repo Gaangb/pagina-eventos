@@ -113,6 +113,9 @@ console.log(loggedInUser)
   const handleLogOut = () => {
     setIsLogged(false)
     localStorage.removeItem("loggedInUser");
+    setTimeout(() => {
+      location.reload();
+    })
 }
 
   const toggleForm = (e) => {
