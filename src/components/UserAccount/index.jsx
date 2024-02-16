@@ -1,7 +1,11 @@
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 import { useState } from "react";
 import { useEffect } from "react";
+import { loggedInUserJSON } from "../../utils/utils";
+
 import styles from "./styles.module.css";
+import SettingsIcon from '@mui/icons-material/Settings';
+
 export function UserAccount() {
     const { usuarios, setUsuarios } = useEventsBuilder();
 
@@ -15,7 +19,6 @@ export function UserAccount() {
     });
 
     useEffect(() => {
-        const loggedInUserJSON = JSON.parse(localStorage.getItem('loggedInUser'));
         if (loggedInUserJSON) {
             setCadastro({
                 nome: loggedInUserJSON.nome,
@@ -27,14 +30,14 @@ export function UserAccount() {
             });
         }
     }, []);
-    
+
     return (
         <div className={styles.container_content}>
 
             <div className={styles.container_form}>
                 <form action="submit" className={styles.form_geral}>
                     <div className={styles.container_titulo}>
-                        <h1><ion-icon name="settings-sharp"></ion-icon>Configurações do usuário</h1>
+                        <h1><SettingsIcon />Configurações do usuário</h1>
                     </div>
                     <div className={styles.flex_row_img}>
                         <img src={cadastro.imagem} alt="" />
