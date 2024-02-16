@@ -25,10 +25,6 @@
     align-items: center;
 }
 
-.container_titulo > h1 > ion-icon {
-    margin-right: 5px;
-}
-
 .flex_row_img{
     display: flex;
     flex-direction: row;
