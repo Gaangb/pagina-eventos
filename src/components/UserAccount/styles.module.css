@@ -19,6 +19,16 @@
     color: rgba(71, 38, 71);
 }
 
+.container_titulo > h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_titulo > h1 > ion-icon {
+    margin-right: 5px;
+}
+
 .flex_row_img{
     display: flex;
     flex-direction: row;
