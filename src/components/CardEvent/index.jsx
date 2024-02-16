@@ -6,7 +6,7 @@ import styles from "./styles.module.css";
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 
-export default function CardEvent({ id, usuarioId, nome, local, data, horario, imagem, descricao }) {
+export default function CardEvent({ id, usuarioId, nome, local, data, horario, imagem, descricao, onClick }) {
 
   const { eventos, setEventos, showForm, setShowForm, deleteEvent } = useEventsBuilder();
   const [cadastro, setCadastro] = useState({
@@ -58,7 +58,7 @@ export default function CardEvent({ id, usuarioId, nome, local, data, horario, i
   };
 
   return (
-    <div className={styles.container_geral_events_page}>
+    <div className={styles.container_geral_events_page} onClick={onClick}>
       <div className={styles.container_imagem_titulo_events_page}>
         <div className={styles.container_titulo_events_page}>
           <h1>{nome}</h1>
