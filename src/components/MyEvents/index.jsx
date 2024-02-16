@@ -1,8 +1,11 @@
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 import { useState } from "react";
 import { useEffect } from "react";
+import { loggedInUserJSON } from "../../utils/utils";
+
 import styles from "./styles.module.css";
 import CardEvent from "../CardEvent";
+import CelebrationOutlinedIcon from '@mui/icons-material/CelebrationOutlined';
 
 export function MyEvents() {
     const { usuarios, eventos, setEventos } = useEventsBuilder();
@@ -18,7 +21,6 @@ export function MyEvents() {
 
 
     useEffect(() => {
-        const loggedInUserJSON = JSON.parse(localStorage.getItem('loggedInUser'));
         if (loggedInUserJSON) {
             setCadastro({
                 id: loggedInUserJSON.id,
@@ -31,11 +33,11 @@ export function MyEvents() {
         }
     }, []);
 
-    const eventosFiltrados = eventos.filter(evento => evento.criador === cadastro.id);
+    const eventosFiltrados = eventos.filter(evento => evento.usuarioId === cadastro.id);
 
     return (
         <div className={styles.container_geral}>
-            <h1><ion-icon name="ticket-outline"></ion-icon>Meus Eventos</h1>
+            <h1><CelebrationOutlinedIcon />Meus Eventos</h1>
             <div className={styles.container_content}>
                 {eventosFiltrados.map((event, index) => (
                     <CardEvent key={index} {...event} />
