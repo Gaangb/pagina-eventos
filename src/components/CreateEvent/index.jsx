@@ -34,7 +34,7 @@ useEffect(() => {
 
   const [cadastroEvento, setCadastroEvento] = useState({
     nome: "",
-    criador: 0,
+    usuarioId: 0,
     local: "",
     data: "",
     horario: "",
@@ -56,7 +56,7 @@ useEffect(() => {
 
       const novoEvento = {
         id: eventos.length + 1,
-        criador: cadastro.id,
+        usuarioId: cadastro.id,
         nome: cadastroEvento.nome,
         local: cadastroEvento.local,
         data: cadastroEvento.data,
