@@ -17,6 +17,20 @@
     pointer-events: none;
 }
 
+.container_events_page > h1{
+    width: 50%;
+    margin: auto;   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    padding-top: 10px;
+}
+
+.container_events_page > h1 > ion-icon {
+    margin-right: 20px;
+}
+
 .container_cards_events_page {
     display: flex;
     flex-wrap: wrap;
