@@ -5,7 +5,6 @@ import { loggedInUserJSON } from "../../utils/utils";
 import styles from "./styles.module.css";
 
 export function SideBar() {
-  const [customClass, setCustomClass] = useState('button_1');
   const [selectedButton, setSelectedButton] = useState('UserAccount');
   const { showComponentsUserPage, setShowComponentsUserPage, usuarios } = useEventsBuilder();
 
