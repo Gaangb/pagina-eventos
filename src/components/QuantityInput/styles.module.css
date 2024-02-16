@@ -1,0 +1,13 @@
+.container_geral > button {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.container_geral > input {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
