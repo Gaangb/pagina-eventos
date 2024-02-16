@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
-import { eventosPreDefinidos, usuariosPredefinidos } from "../utils/utils";
+import { eventosPreDefinidos, loggedInUserJSON, usuariosPredefinidos } from "../utils/utils";
 
 import logo from "../assets/logo_login.png"
 
@@ -44,8 +44,6 @@ export function EventProvider({ children }) {
   }, [eventos]);
 
   useEffect(() => {
-    const loggedInUserJSON = localStorage.getItem("loggedInUser");
-
     if (loggedInUserJSON) {
       setLoggedInUser(loggedInUserJSON);
       setIsLogged(true)

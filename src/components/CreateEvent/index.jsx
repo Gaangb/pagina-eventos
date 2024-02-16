@@ -1,6 +1,7 @@
 import styles from "./styles.module.css";
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 import { useState, useEffect } from "react";
+import { loggedInUserJSON } from "../../utils/utils";
 
 
 export function CreateEvent() {
@@ -18,7 +19,6 @@ export function CreateEvent() {
 });
 
 useEffect(() => {
-    const loggedInUserJSON = JSON.parse(localStorage.getItem('loggedInUser'));
     if (loggedInUserJSON) {
         setCadastro({
             id: loggedInUserJSON.id,

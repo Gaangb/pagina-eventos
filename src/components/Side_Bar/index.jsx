@@ -1,10 +1,10 @@
-import styles from "./styles.module.css";
-import photo from "../../assets/background-login.jpg";
 import { useCallback, useState, useEffect } from "react";
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
+import { loggedInUserJSON } from "../../utils/utils";
+
+import styles from "./styles.module.css";
 
 export function SideBar() {
-  // const [colorButton, setColorButton] = useState('');
   const [customClass, setCustomClass] = useState('button_1');
   const [selectedButton, setSelectedButton] = useState('UserAccount');
   const { showComponentsUserPage, setShowComponentsUserPage, usuarios } = useEventsBuilder();
@@ -25,7 +25,6 @@ export function SideBar() {
 });
 
 useEffect(() => {
-    const loggedInUserJSON = JSON.parse(localStorage.getItem('loggedInUser'));
     if (loggedInUserJSON) {
         setCadastro({
             nome: loggedInUserJSON.nome,

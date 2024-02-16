@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
+import { loggedInUserJSON } from "../../utils/utils";
 
 import styles from "./styles.module.css";
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
@@ -18,7 +19,6 @@ export default function CardEvent({ id, usuarioId, nome, local, data, horario, i
   })
 
   useEffect(() => {
-    const loggedInUserJSON = JSON.parse(localStorage.getItem('loggedInUser'));
     if (loggedInUserJSON) {
       setCadastro({
         id: loggedInUserJSON.id,
