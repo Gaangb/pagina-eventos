@@ -3,8 +3,7 @@ import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 import { useLocation } from "react-router-dom";
 
 import styles from "./styles.module.css";
-import { Filter } from "@mui/icons-material";
-import QuantityInput from "../../components/QuantityInput";
+import { PaymentContainer } from "../../components/TicketContainer";
 
 export function EventsDetailsPage() {
 
@@ -33,20 +32,7 @@ export function EventsDetailsPage() {
                         <h2>Sobre o evento</h2>
                         <p>{currentEvents.descricao}</p>
                     </div>
-                    <div className={styles.content_bottom_prices}>
-                        <p>Local do evento: {currentEvents.local}</p>
-                        <div>
-                            <p>Preço pista: R$ {currentEvents.preco_pista},00</p>
-                            <QuantityInput />
-                        </div>
-                        <div>
-                            <p>Preço camarote: R$ {currentEvents.preco_camarote},00</p>
-                            <div>
-                                <QuantityInput />
-                            </div>
-                        </div>
-                        <button>Comprar ingressos</button>
-                    </div>
+                    <PaymentContainer local={currentEvents.local} preco_camarote={currentEvents.preco_camarote} preco_pista={currentEvents.preco_pista}/>
                 </div>
             </div>
         </div>
