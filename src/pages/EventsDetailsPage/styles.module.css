@@ -1,70 +1,68 @@
-.container_geral{
-    background-color: rgba(238, 130, 238);
-    height: 90vh;
-    padding: 10px;
+.container_geral {
+  background-color: rgba(71, 38, 71);
+  height: 90vh;
+  padding: 10px;
 }
 
-.container_content{
-    display: flex;
-    flex-direction: column;
-    width: 80vw;
-    margin: auto;
-    border: 5px double rgba(71, 38, 71);
-    border-radius: 50px 20px 50px 20px;
-    height: 98%;
+.container_content {
+  background-color: #e5bae9;
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  margin: auto;
+  box-shadow: rgba(240, 46, 170, 0.4) -5px 5px,
+    rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px,
+    rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+  border-radius: 30px 10px 30px 10px;
+  height: 98%;
 }
 
-.container_content_top{
-    display: flex;
-    margin-top: 10px;
-    margin-left: 5%;
+.container_content_top {
+  display: flex;
+  margin-top: 10px;
+  margin-left: 5%;
 }
-.container_content_top > img{
-    width: 40vw;
-    height: 40vh;
-    border-radius: 20px 0px 0px 0px;
-}
-
-.container_content_top_text{
-    margin-left: 5%;
-    height: 40vh;
-    display: flex;
-    flex-direction: column;
-
+.container_content_top > img {
+  width: 40vw;
+  height: 40vh;
+  border-radius: 20px 0px 0px 0px;
 }
 
-.container_content_bottom{
-    margin-top: 20px;
-    margin-left: 5%;
-    display: flex;
-    width: 100%;
+.container_content_top_text {
+  margin-left: 5%;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.content_bottom_description{
-    width: 40vw;
+.container_content_top_text > div > h1 {
+  margin-bottom: 20px;
+}
+
+.container_content_top_text > div > p {
+  margin-bottom: 10px;
+}
+
+.container_content_top_text > div > p {
+  display: flex;
+  align-items: center;
+}
+
+.container_content_top_text > div > p > svg {
+  margin-right: 5px;
+}
+
+.container_content_bottom {
+  margin-top: 20px;
+  margin-left: 5%;
+  display: flex;
+  width: 100%;
+}
+
+.content_bottom_description {
+  width: 40vw;
 }
 
 .content_bottom_description > h2 {
-    margin-bottom: 10px;
-}
-
-.content_bottom_prices{
-    margin-left: 5%;
-    background-color: rgba(255, 255, 255, 0.4);
-    width: 28vw;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.content_bottom_prices > div{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-
-.content_bottom_prices > div > input{
-    width: 40px;
-    background-color: transparent;
-    border: 1px solid rgba(238, 130, 238);
-    padding: 5px;
+  margin-bottom: 10px;
 }
