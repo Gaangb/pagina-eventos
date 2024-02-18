@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./styles.module.css";
 import QuantityInput from "../QuantityInput";
@@ -8,6 +9,7 @@ export function PaymentContainer({ preco_pista, preco_camarote }) {
   const [payment, setPayment] = useState(0);
   const [quantityPista, setQuantityPista] = useState(0);
   const [quantityCamarote, setQuantityCamarote] = useState(0);
+  const navigate = useNavigate();
 
   const handleQuantityChangePista = (newQuantity) => {
     setQuantityPista(newQuantity);
@@ -18,7 +20,7 @@ export function PaymentContainer({ preco_pista, preco_camarote }) {
   };
 
   const handleBuyTickets = () => {
-    
+    navigate("/pagamento", { state: { payment } });
   };
 
   useEffect(() => {
