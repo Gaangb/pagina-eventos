@@ -5,6 +5,8 @@ import { loggedInUserJSON } from "../../utils/utils";
 import styles from "./styles.module.css";
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
+import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
+import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";
 
 export default function CardEvent({ id, usuarioId, nome, local, data, horario, imagem, descricao, onClick }) {
 
@@ -62,9 +64,8 @@ export default function CardEvent({ id, usuarioId, nome, local, data, horario, i
       <div className={styles.container_imagem_titulo_events_page}>
         <div className={styles.container_titulo_events_page}>
           <h1>{nome}</h1>
-          <p>Local: {local}</p>
-          <p>Data: {data}</p>
-          <p className={styles.hide_on_phone}>Horario: {horario}</p>
+          <p><RoomOutlinedIcon /> {local}</p>
+          <p><CalendarMonthOutlinedIcon /> {data} - {horario} </p>
         </div>
         <img
           src={imagem}
