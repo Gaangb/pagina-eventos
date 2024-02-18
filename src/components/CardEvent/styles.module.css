@@ -1,10 +1,10 @@
 .container_geral_events_page{
-  width: 26vw;
-  height: 30vh;
+  width: 24vw;
+  height: 26vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid  rgba(71, 38, 71);
   margin-top: 20px;
   margin-left: 20px;
   border-radius: 6px;
@@ -21,11 +21,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  cursor: pointer;
 }
 
 .card_footer{
   display: flex;
-  width: 100%;
+  width: 90%;
   justify-content: space-between;
 }
 
@@ -36,6 +37,28 @@
   overflow: hidden;
   text-overflow: ellipsis;
   width: 75%;
+}
+
+.card_footer > div:last-of-type > button {
+  background-color: transparent;
+  color: rgba(71, 38, 71);
+  border: none;
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+
+  height: 20px;
+}
+
+.card_footer > div:last-of-type > button:hover {
+  color: rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.card_footer > div:last-of-type > button > svg {
+  font-size: 14px;
+  margin-left: 4px;
 }
 
 .card_footer_buttons{
@@ -63,7 +86,7 @@
   border: none;
   cursor: pointer;
   width: 40px;
-  color: rgba(238, 130, 238);
+  color: rgba(71, 38, 71);
   font-size: 30px;
   display: flex;
 }
