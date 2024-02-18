@@ -8,6 +8,7 @@ import { EventsPage } from './pages/EventsPage'
 import { NavBar } from './components/NavBar'
 import { UserPage } from './pages/UserPage'
 import { EventsDetailsPage } from './pages/EventsDetailsPage'
+import { PaymentPage } from './pages/PaymentPage'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
             <Route path="/" element={<EventsPage />} />
             <Route path="/minha-conta" element={<UserPage />} />
             <Route path="/eventos/:id" element={<EventsDetailsPage />} />
+            <Route path="/pagamento" element={<PaymentPage />} />
           </Routes>
         </EventProvider>
       </div>
