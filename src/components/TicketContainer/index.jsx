@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "./styles.module.css";
 import QuantityInput from "../QuantityInput";
 
-export function PaymentContainer({ local, preco_pista, preco_camarote }) {
+export function PaymentContainer({ preco_pista, preco_camarote }) {
   const [payment, setPayment] = useState(0);
   const [quantityPista, setQuantityPista] = useState(0);
   const [quantityCamarote, setQuantityCamarote] = useState(0);
@@ -18,34 +18,54 @@ export function PaymentContainer({ local, preco_pista, preco_camarote }) {
   };
 
   const handleBuyTickets = () => {
-    const total =
-      quantityPista * preco_pista + quantityCamarote * preco_camarote;
-    setPayment(total);
+    
   };
 
+  useEffect(() => {
+    const total =
+    quantityPista * preco_pista + quantityCamarote * preco_camarote;
+    setPayment(total);
+  },[quantityPista, quantityCamarote]);
+
   return (
-    <div className={styles.content_bottom_prices}>
-      <p>Local do evento: {local}</p>
-      <div>
-        <p>Preço pista: R$ {preco_pista},00</p>
-        <QuantityInput onQuantityChange={handleQuantityChangePista} />
+    <div className={styles.container_geral}>
+      <div className={styles.content_title}>
+        <h3>Ingressos</h3>
       </div>
-      <div>
-        <p>Preço camarote: R$ {preco_camarote},00</p>
-        <div>
+      <div className={styles.container_content_geral}>
+        <div className={styles.content_prices}>
+          <div>
+            <p className={styles.content_prices_title}>Pista </p>
+            <p>R${preco_pista},00</p>
+          </div>
+          <QuantityInput onQuantityChange={handleQuantityChangePista} />
+        </div>
+        <div className={styles.content_prices}>
+          <div>
+            <p className={styles.content_prices_title}>Camarote </p>
+            <p>R${preco_camarote},00</p>
+          </div>
           <QuantityInput onQuantityChange={handleQuantityChangeCamarote} />
         </div>
+        {quantityCamarote || quantityPista ? (
+          <div>
+            <div className={styles.content_promo}>
+              <input type="text" placeholder="Código promocional"></input>
+            </div>
+            <div className={styles.content_total}>
+              <div>
+                <p>Total </p>
+                <p>R$ {payment},00</p>
+              </div>
+              <button onClick={handleBuyTickets}>Comprar ingressos</button>
+            </div>
+          </div>
+        ) : (
+          <div className={styles.content_total_disabled}>
+            <button disabled>Selecione pelo menos um ingresso</button>
+          </div>
+        )}
       </div>
-      {quantityCamarote || quantityPista ? (
-        <div>
-          <p>Total: R$ {payment},00</p>
-          <button onClick={handleBuyTickets}>Comprar ingressos</button>
-        </div>
-      ) : (
-        <div>
-          <p>Selecione pelo menos um ingresso</p>
-        </div>
-      )}
     </div>
   );
 }

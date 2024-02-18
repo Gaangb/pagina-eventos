@@ -2,16 +2,18 @@ import { useState } from "react";
 
 import styles from "./styles.module.css";
 
-export default function QuantityInput() {
+export default function QuantityInput({onQuantityChange}) {
     const [quantity, setQuantity] = useState(0);
 
     const increment = () => {
         setQuantity(quantity + 1);
+        onQuantityChange(quantity + 1);
     };
 
     const decrement = () => {
         if (quantity > 0) {
             setQuantity(quantity - 1);
+            onQuantityChange(quantity - 1);
         }
     };
 
