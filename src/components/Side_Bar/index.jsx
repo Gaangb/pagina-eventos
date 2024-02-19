@@ -5,8 +5,9 @@ import { loggedInUserJSON } from "../../utils/utils";
 import styles from "./styles.module.css";
 
 export function SideBar() {
-  const [selectedButton, setSelectedButton] = useState('UserAccount');
-  const { showComponentsUserPage, setShowComponentsUserPage, usuarios } = useEventsBuilder();
+  const [selectedButton, setSelectedButton] = useState("UserAccount");
+  const { showComponentsUserPage, setShowComponentsUserPage, usuarios } =
+    useEventsBuilder();
 
   const changeComponente = useCallback((e, buttonName) => {
     e.preventDefault();
@@ -15,55 +16,66 @@ export function SideBar() {
   }, []);
 
   const [cadastro, setCadastro] = useState({
-    nome: '',
-    cpf: '',
-    nome_estabelecimento: '',
-    email: '',
-    senha: '',
-    imagem: ""
-});
+    nome: "",
+    cpf: "",
+    nome_estabelecimento: "",
+    email: "",
+    senha: "",
+    imagem: "",
+  });
 
-useEffect(() => {
+  useEffect(() => {
     if (loggedInUserJSON) {
-        setCadastro({
-            nome: loggedInUserJSON.nome,
-            cpf: loggedInUserJSON.cpf,
-            nome_estabelecimento: loggedInUserJSON.nome_estabelecimento,
-            email: loggedInUserJSON.email,
-            senha: loggedInUserJSON.senha,
-            imagem: loggedInUserJSON.imagem
-        });
+      setCadastro({
+        nome: loggedInUserJSON.nome,
+        cpf: loggedInUserJSON.cpf,
+        nome_estabelecimento: loggedInUserJSON.nome_estabelecimento,
+        email: loggedInUserJSON.email,
+        senha: loggedInUserJSON.senha,
+        imagem: loggedInUserJSON.imagem,
+      });
     }
-}, []);
+  }, []);
 
   return (
     <div className={styles.container_geral}>
       <div className={styles.container_content}>
         <img src={cadastro.imagem} alt="" />
         <button
-          style={selectedButton === 'UserAccount' ? {  border: '1px solid white', borderRadius: '5px' } : {}}
-          onClick={(e) => changeComponente(e, 'UserAccount')}
+          style={
+            selectedButton === "UserAccount"
+              ? { border: "1px solid white", borderRadius: "5px" }
+              : {}
+          }
+          onClick={(e) => changeComponente(e, "UserAccount")}
         >
           Conta
         </button>
         <button
-          style={selectedButton === 'MyEvents' ? { border: '1px solid white', borderRadius: '5px' } : {}}
-          onClick={(e) => changeComponente(e, 'MyEvents')}
+          style={
+            selectedButton === "MyEvents"
+              ? { border: "1px solid white", borderRadius: "5px" }
+              : {}
+          }
+          onClick={(e) => changeComponente(e, "MyEvents")}
         >
           Meus Eventos
         </button>
         <button
-          className={selectedButton === 'Financeiro' ? styles.selectedButton : ''}
-          onClick={(e) => changeComponente(e, 'Financeiro')}
+          className={
+            selectedButton === "Financeiro" ? styles.selectedButton : ""
+          }
+          onClick={(e) => changeComponente(e, "Financeiro")}
         >
           Financeiro
         </button>
         <button
-          className={selectedButton === 'Sair' ? styles.selectedButton : ''}
-          onClick={(e) => changeComponente(e, 'Sair')}
+          className={selectedButton === "Sair" ? styles.selectedButton : ""}
+          onClick={(e) => changeComponente(e, "Sair")}
         >
           Sair
-        </button>       </div>
+        </button>{" "}
+      </div>
     </div>
   );
 }
