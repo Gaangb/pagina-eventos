@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 import { loggedInUserJSON } from "../../utils/utils";
 
+
 import styles from "./styles.module.css";
 import DriveFileRenameOutlineOutlinedIcon from "@mui/icons-material/DriveFileRenameOutlineOutlined";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
@@ -19,8 +20,10 @@ export default function CardEvent({
   imagem,
   descricao,
   onClick,
+
 }) {
-  const { eventos, setEventos, showForm, setShowForm, deleteEvent } =
+
+  const { eventos, setEventos, showForm, setShowForm, deleteEvent, setCurrentEvent } =
     useEventsBuilder();
   const [cadastro, setCadastro] = useState({
     id: 0,
@@ -47,6 +50,7 @@ export default function CardEvent({
 
   const onEditButtonClick = () => {
     setShowForm(!showForm);
+    setCurrentEvent({ ...eventos.find((event) => event.id === id) });
   };
 
   const RenderEditButton = () => {
