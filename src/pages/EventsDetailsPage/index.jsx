@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 import { useLocation } from "react-router-dom";
 
@@ -9,7 +8,7 @@ import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";
 import PersonPinOutlinedIcon from '@mui/icons-material/PersonPinOutlined';
 
 export function EventsDetailsPage() {
-  const { eventos, setEventos, usuarios } = useEventsBuilder();
+  const { usuarios } = useEventsBuilder();
   const location = useLocation();
   const currentEvents = location.state.evento;
 
@@ -46,6 +45,7 @@ export function EventsDetailsPage() {
           <PaymentContainer
             preco_camarote={currentEvents.preco_camarote}
             preco_pista={currentEvents.preco_pista}
+            evento={currentEvents.nome}
           />
         </div>
       </div>
