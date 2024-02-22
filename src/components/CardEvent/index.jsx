@@ -9,7 +9,7 @@ import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
-
+import AlertDialogModal from "../AlertDialogModal";
 export default function CardEvent({
   id,
   usuarioId,
@@ -20,11 +20,12 @@ export default function CardEvent({
   imagem,
   descricao,
   onClick,
-
 }) {
 
-  const { eventos, setEventos, showForm, setShowForm, deleteEvent, setCurrentEvent } =
+  const { eventos, showForm, setShowForm, deleteEvent, setCurrentEvent } =
     useEventsBuilder();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [eventToDeleteId, setEventToDeleteId] = useState(null);
   const [cadastro, setCadastro] = useState({
     id: 0,
     nome: "",
@@ -82,7 +83,15 @@ export default function CardEvent({
   };
 
   const onDeleteButtonClick = (id) => {
-    deleteEvent(id);
+    // Chama o AlertDialogModal quando o botão de deletar for clicado
+    setModalOpen(!modalOpen);
+    setEventToDeleteId(id);
+    console.log("deletar", modalOpen);
+
+  };
+
+  const handleDelete = () => {
+    deleteEvent(eventToDeleteId);
     localStorage.setItem("eventos", JSON.stringify([]));
   };
 
@@ -111,6 +120,14 @@ export default function CardEvent({
           </div>
         </div>
       </div>
+      {modalOpen && (
+        <AlertDialogModal
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+          handleDelete={handleDelete}
+          handleClose={() => setModalOpen(false)}
+        />
+      )}
     </div>
   );
 }
