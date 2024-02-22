@@ -7,6 +7,7 @@ export function CreateEvent() {
   const { eventos, setEventos, toggleForm, currentEvent, setCurrentEvent } =
     useEventsBuilder();
 
+  const [isEditMode, setIsEditMode] = useState(false);
   const [cadastro, setCadastro] = useState({
     id: 0,
     nome: "",
@@ -16,20 +17,6 @@ export function CreateEvent() {
     senha: "",
     imagem: "",
   });
-
-  useEffect(() => {
-    if (loggedInUserJSON) {
-      setCadastro({
-        id: loggedInUserJSON.id,
-        nome: loggedInUserJSON.nome,
-        cpf: loggedInUserJSON.cpf,
-        nome_estabelecimento: loggedInUserJSON.nome_estabelecimento,
-        email: loggedInUserJSON.email,
-        senha: loggedInUserJSON.senha,
-        imagem: loggedInUserJSON.imagem,
-      });
-    }
-  }, []);
 
   const [cadastroEvento, setCadastroEvento] = useState({
     nome: "",
@@ -65,10 +52,8 @@ export function CreateEvent() {
             )
           );
           toggleForm(event);
-          setCurrentEvent(null);
         };
       } else {
-        // Se nenhuma nova imagem foi fornecida, apenas atualize as outras propriedades
         const updatedEvent = {
           ...currentEvent,
           ...cadastroEvento,
@@ -79,15 +64,14 @@ export function CreateEvent() {
           )
         );
         toggleForm(event);
-        setCurrentEvent(null);
       }
     } else {
-      // Se for um novo evento, continue com o código existente
+      // novo evento
       const reader = new FileReader();
       reader.readAsDataURL(cadastroEvento.imagem);
       reader.onloadend = function () {
         const base64data = reader.result;
-  
+
         const novoEvento = {
           id: eventos.length + 1,
           usuarioId: cadastro.id,
@@ -104,7 +88,6 @@ export function CreateEvent() {
         };
         setEventos((prevEventos) => [...prevEventos, novoEvento]);
         toggleForm(event);
-        setCurrentEvent(null);
       };
     }
     setCadastroEvento({
@@ -120,8 +103,20 @@ export function CreateEvent() {
       ingressos_pista: 0,
       ingressos_camarote: 0,
     });
+    setCurrentEvent({
+      nome: "",
+      usuarioId: 0,
+      local: "",
+      data: "",
+      horario: "",
+      imagem: null,
+      descricao: "",
+      preco_pista: 0,
+      preco_camarote: 0,
+      ingressos_pista: 0,
+      ingressos_camarote: 0,
+    });
   };
-  
 
   const handleDateChange = (e) => {
     const inputDate = new Date(e.target.value);
@@ -147,11 +142,44 @@ export function CreateEvent() {
     }
   };
 
+  const handleCancelButton = (e) => {
+    e.preventDefault();
+    toggleForm(e);
+    setCurrentEvent({
+      nome: "",
+      usuarioId: 0,
+      local: "",
+      data: "",
+      horario: "",
+      imagem: null,
+      descricao: "",
+      preco_pista: 0,
+      preco_camarote: 0,
+      ingressos_pista: 0,
+      ingressos_camarote: 0,
+    });
+  }
+
   useEffect(() => {
     setCadastroEvento({
       ...currentEvent,
     });
   }, [currentEvent]);
+
+  useEffect(() => {
+    if (loggedInUserJSON) {
+      setCadastro({
+        id: loggedInUserJSON.id,
+        nome: loggedInUserJSON.nome,
+        cpf: loggedInUserJSON.cpf,
+        nome_estabelecimento: loggedInUserJSON.nome_estabelecimento,
+        email: loggedInUserJSON.email,
+        senha: loggedInUserJSON.senha,
+        imagem: loggedInUserJSON.imagem,
+      });
+    }
+  }, []);
+
   console.log("cadastro evento  : ", cadastroEvento);
 
   console.log("eventos  : " + eventos);
@@ -180,7 +208,7 @@ export function CreateEvent() {
                   setCadastroEvento({
                     ...cadastroEvento,
                     imagem: e.target.files[0],
-                  }) 
+                  })
                 }
               />
             </div>
@@ -240,7 +268,8 @@ export function CreateEvent() {
                 type="date"
                 name="data"
                 id=""
-                onBlur={handleDateChange}
+                onChange={handleDateChange}
+                onKeyDown={(e) => e.preventDefault()}
               />
             </div>
             <div className={styles.container_input}>
@@ -263,7 +292,7 @@ export function CreateEvent() {
           </div>
           <div>
             <div className={styles.container_input}>
-              <label htmlFor="" ingressos_pista>
+              <label htmlFor="ingressos_pista">
                 Quantidade ingressos pista
               </label>
               <input
@@ -334,14 +363,14 @@ export function CreateEvent() {
             ></textarea>
           </div>
           <div className={styles.container_buttons}>
+            <button type="submit" onClick={handleCancelButton}>
+              Cancelar
+            </button>
             {currentEvent ? (
               <button type="submit">Atualizar evento</button>
             ) : (
               <button type="submit">Criar evento</button>
             )}
-            <button type="submit" onClick={(e) => toggleForm(e)}>
-              Cancelar
-            </button>
           </div>
         </div>
       </form>
