@@ -1,0 +1,151 @@
+.container_geral{
+  width: 100vw;
+  height: 88vh;
+}
+
+.container_content{
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.content_details{
+  width: 100%;
+  height: 40%;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 30px;
+}
+
+.content_details > div:first-of-type{
+  width: 100%;
+}
+
+.form_geral{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.form_top{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.form_top > div {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.form_top > div > label{
+  margin-bottom: 6px;
+}
+
+.form_top > div > input{
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid gray;
+  outline: none;
+  padding: 6px;
+}
+
+.form_bottom {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.form_bottom > label {
+  margin-bottom: 6px;
+}
+
+.form_bottom > input{
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid gray;
+  outline: none;
+  padding: 6px;
+}
+
+.content_payment{
+  width: 40vw;
+  height: 80%;
+  border: 1px solid gray;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.content_payment > div:first-of-type{
+  background-color: rgba(71, 38, 71);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.content_payment_top{
+  padding: 0px 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.content_payment_bottom{
+  padding: 0px 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.content_payment_bottom > p:first-of-type{
+  font-weight: 700;
+}
+
+.content_payment_bottom > button {
+  margin-top: 10px;
+  height: 40px;
+  width: 90%;
+  background-color: rgba(71, 38, 71);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.content_payment_bottom > button:hover{
+  background-color: rgba(71, 38, 71, 0.8);
+}
+
+.payment_timer {
+  width: 90%;
+  margin-top: 20px;
+  display: flex;
+  padding: 10px 20px;
+  background-color: rgba(128, 128, 128, 0.4);
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.payment_timer > div:first-of-type{
+  width: 24%;
+  display: flex;
+  justify-content: space-between;
+}
+.payment_timer > div:first-of-type > p {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.payment_timer > div:last-of-type{
+  width: 80%;
+  margin-left: 20px;
+}
