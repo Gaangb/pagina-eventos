@@ -5,29 +5,41 @@ import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import QuantityInput from "../QuantityInput";
 
-export function PaymentContainer({ preco_pista, preco_camarote }) {
-  const [payment, setPayment] = useState(0);
-  const [quantityPista, setQuantityPista] = useState(0);
-  const [quantityCamarote, setQuantityCamarote] = useState(0);
+export function PaymentContainer({ preco_pista, preco_camarote, evento }) {
   const navigate = useNavigate();
+  const [purshaseDetails, setPurshaseDetails] = useState({
+    quantityPista: 0,
+    quantityCamarote: 0,
+    payment: 0,
+    evento: evento,
+  })
 
   const handleQuantityChangePista = (newQuantity) => {
-    setQuantityPista(newQuantity);
+    setPurshaseDetails({
+      ...purshaseDetails,
+      quantityPista: newQuantity
+    })
   };
 
   const handleQuantityChangeCamarote = (newQuantity) => {
-    setQuantityCamarote(newQuantity);
+    setPurshaseDetails({
+      ...purshaseDetails,
+      quantityCamarote: newQuantity
+    })
   };
 
   const handleBuyTickets = () => {
-    navigate("/pagamento", { state: { payment } });
+    navigate("/pagamento", { state: { purshaseDetails } });
   };
 
   useEffect(() => {
     const total =
-    quantityPista * preco_pista + quantityCamarote * preco_camarote;
-    setPayment(total);
-  },[quantityPista, quantityCamarote]);
+    purshaseDetails.quantityPista * preco_pista + purshaseDetails.quantityCamarote * preco_camarote;
+    setPurshaseDetails({
+      ...purshaseDetails,
+      payment: total
+    });
+  },[purshaseDetails.quantityPista, purshaseDetails.quantityCamarote]);
 
   return (
     <div className={styles.container_geral}>
@@ -49,7 +61,7 @@ export function PaymentContainer({ preco_pista, preco_camarote }) {
           </div>
           <QuantityInput onQuantityChange={handleQuantityChangeCamarote} />
         </div>
-        {quantityCamarote || quantityPista ? (
+        {purshaseDetails.quantityCamarote || purshaseDetails.quantityPista ? (
           <div>
             <div className={styles.content_promo}>
               <input type="text" placeholder="Código promocional"></input>
@@ -57,7 +69,7 @@ export function PaymentContainer({ preco_pista, preco_camarote }) {
             <div className={styles.content_total}>
               <div>
                 <p>Total </p>
-                <p>R$ {payment},00</p>
+                <p>R$ {purshaseDetails.payment},00</p>
               </div>
               <button onClick={handleBuyTickets}>Comprar ingressos</button>
             </div>
