@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { toast } from 'react-toastify';
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 import { loggedInUserJSON } from "../../utils/utils";
 
@@ -93,6 +94,7 @@ export default function CardEvent({
   const handleDelete = () => {
     deleteEvent(eventToDeleteId);
     localStorage.setItem("eventos", JSON.stringify([]));
+    toast.success("Evento deletado com sucesso");
   };
 
   return (
