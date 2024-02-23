@@ -104,22 +104,28 @@
 .preview_image{
     width: 100px;
 }
-@media screen and (max-width: 1366px) {
+
+@media screen and (min-width: 768px) and (max-width: 1366px) {
     .form_geral_create_event_page{
         height: 84%;
     }
     
 }
-@media screen and (max-width: 768px) {
+
+@media screen and (max-width: 420px) {
     .form_geral_create_event_page{
-        height: 80vh;
+        height: 72%;
     }
 
     .form_titulo_create_event_page > h1 {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     .container_input > label {
         font-size: 12px;
+    }
+    
+    .container_buttons > button {
+        width: 40%;
     }
 }
