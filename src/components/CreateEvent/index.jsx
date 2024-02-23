@@ -210,7 +210,6 @@ export function CreateEvent() {
             <div className={styles.container_input}>
               <label htmlFor="imagem">Escolha sua imagem</label>
               <input
-                required
                 type="file"
                 name="imagem"
                 accept="image/*"
