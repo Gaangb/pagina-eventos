@@ -66,3 +66,40 @@
 .content_bottom_description > h2 {
   margin-bottom: 10px;
 }
+
+@media screen and (max-width: 768px) {
+  .container_geral{
+    overflow-y: auto;
+  }
+
+  .container_content {
+    height: auto;
+    width: 100%;
+  }
+
+  .container_content_top{
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .container_content_top > img{
+    width: 90%;
+    height: 40%;
+  }
+
+  .container_content_top_text{
+    width: 90%;
+    height: auto;
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+
+  .container_content_bottom{
+    flex-direction: column;
+    margin-top: 0px;
+  }
+
+  .content_bottom_description{
+    width: 90%;
+  }
+}
