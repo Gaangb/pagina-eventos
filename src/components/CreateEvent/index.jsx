@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 import { useState, useEffect } from "react";
 import { formatDateForInput, loggedInUserJSON } from "../../utils/utils";
-
+import { minDate, maxDate } from '../../utils/utils';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from "./styles.module.css";
 
@@ -10,7 +10,6 @@ export function CreateEvent() {
   const { eventos, setEventos, toggleForm, currentEvent, setCurrentEvent } =
     useEventsBuilder();
 
-  const [isEditMode, setIsEditMode] = useState(false);
   const [cadastro, setCadastro] = useState({
     id: 0,
     nome: "",
@@ -47,7 +46,7 @@ export function CreateEvent() {
           const updatedEvent = {
             ...currentEvent,
             ...cadastroEvento,
-            imagem: base64data, // Atualize a propriedade imagem com a nova base64
+            imagem: base64data,
           };
           setEventos((prevEventos) =>
             prevEventos.map((event) =>
@@ -273,8 +272,8 @@ export function CreateEvent() {
               <label htmlFor="data">Data do evento</label>
               <input
                 required
-                min="2023-12-01"
-                max="2024-12-31"
+                min={minDate.toISOString().split('T')[0]}
+                max={maxDate.toISOString().split('T')[0]}
                 value={formatDateForInput(cadastroEvento.data)}
                 className={styles.input_create_event}
                 type="date"
@@ -309,8 +308,6 @@ export function CreateEvent() {
                 Quantidade ingressos pista
               </label>
               <input
-                required
-                min="0"
                 value={cadastroEvento.ingressos_pista}
                 className={styles.input_create_event}
                 type="number"

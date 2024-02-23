@@ -10,6 +10,7 @@
     left: 0;
     right: 0;
     margin: auto;
+    height: 92vh;
 }
 
 .form_titulo_create_event_page{
@@ -19,7 +20,7 @@
 }
 
 .form_geral_create_event_page{
-    height: 78vh;
+    height: 78%;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -58,7 +59,7 @@
     width: 45%;
     margin: auto;
     color: white;
-    margin-bottom: 30px;
+    margin-bottom: 12px;
 }
 
 .container_input > img {
@@ -88,7 +89,7 @@
 }
 
 .container_buttons > button {
-    margin: 20px;
+    margin-top: 20px;
     width: 30%;
     height: 40px;
     background-color: rgba(238, 130, 238);
@@ -98,9 +99,27 @@
     font-weight: 400;
     cursor: pointer;
     margin-right: 20px;
-    margin-top: 40px;
 }
 
 .preview_image{
     width: 100px;
+}
+@media screen and (max-width: 1366px) {
+    .form_geral_create_event_page{
+        height: 84%;
+    }
+    
+}
+@media screen and (max-width: 768px) {
+    .form_geral_create_event_page{
+        height: 80vh;
+    }
+
+    .form_titulo_create_event_page > h1 {
+        font-size: 20px;
+    }
+
+    .container_input > label {
+        font-size: 12px;
+    }
 }
