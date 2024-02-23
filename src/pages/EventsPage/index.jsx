@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 
 import CardEvent from "../../components/CardEvent";
@@ -7,8 +6,7 @@ import styles from "./styles.module.css";
 import CelebrationOutlinedIcon from '@mui/icons-material/CelebrationOutlined';
 
 export function EventsPage() {
-  const { eventos, setEventos} = useEventsBuilder();
-  const navigate = useNavigate();
+  const { eventos, setEventos, openEventsDetails} = useEventsBuilder();
 
   useEffect(() => {
     if (eventos.length) {
@@ -21,9 +19,7 @@ export function EventsPage() {
     setEventos(eventosLocalStorage);
   }, []);
 
-  const openEventsDetails = (evento) => {
-    navigate(`/eventos/${evento.id}`, { state: { evento } });
-  }
+
 
   return (
     <section className={styles.container_geral_events_page}>

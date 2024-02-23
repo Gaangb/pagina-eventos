@@ -12,6 +12,7 @@ import {
 } from "../utils/utils";
 
 import logo from "../assets/logo_login.png";
+import { useNavigate } from "react-router-dom";
 
 const EventContext = createContext();
 
@@ -24,6 +25,7 @@ export function EventProvider({ children }) {
 
   const [isLogged, setIsLogged] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState({});
+  const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
   const [showComponentsUserPage, setShowComponentsUserPage] =
     useState("UserAccount");
@@ -59,6 +61,9 @@ export function EventProvider({ children }) {
       return eventosPreDefinidos;
     }
   });
+  const openEventsDetails = (evento) => {
+    navigate(`/eventos/${evento.id}`, { state: { evento } });
+    }
 
   const showLogo = (
     <img src={logo} alt="Logo" onClick={() => (location.href = "/")} />
@@ -105,6 +110,7 @@ export function EventProvider({ children }) {
         showForm,
         showLogo,
         usuarios,
+        openEventsDetails,
         setCurrentEvent,
         setUsuarios,
         setEventos,
