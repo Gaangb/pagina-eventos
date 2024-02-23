@@ -5,6 +5,8 @@ import {
   useState,
   useCallback,
 } from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   eventosPreDefinidos,
   loggedInUserJSON,
@@ -12,28 +14,28 @@ import {
 } from "../utils/utils";
 
 import logo from "../assets/logo_login.png";
-import { useNavigate } from "react-router-dom";
 
 const EventContext = createContext();
 
 export function EventProvider({ children }) {
   const [currentEvent, setCurrentEvent] = useState({});
-
-  const [customClassNavBar, setCustomClassNavBar] = useState(
-    "container_navbar_events_page"
-  );
-
+  const [showNavbar, setShowNavbar] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState({});
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
+
+  const [customClassNavBar, setCustomClassNavBar] = useState(
+    "container_navbar_events_page"
+  );
   const [showComponentsUserPage, setShowComponentsUserPage] =
     useState("UserAccount");
-  
+
   const [usuarios, setUsuarios] = useState(() => {
     const usuariosLocalStorage = JSON.parse(localStorage.getItem("usuarios"));
+    console.log(usuariosLocalStorage);
 
-    if (usuariosLocalStorage) {
+    if (Array.isArray(usuariosLocalStorage)) {
       const idsLocalStorage = new Set(
         usuariosLocalStorage.map((usuario) => usuario.id)
       );
@@ -49,7 +51,7 @@ export function EventProvider({ children }) {
   const [eventos, setEventos] = useState(() => {
     const eventosLocalStorage = JSON.parse(localStorage.getItem("eventos"));
 
-    if (eventosLocalStorage) {
+    if (Array.isArray(eventosLocalStorage)) {
       const idsLocalStorage = new Set(
         eventosLocalStorage.map((evento) => evento.id)
       );
@@ -61,13 +63,15 @@ export function EventProvider({ children }) {
       return eventosPreDefinidos;
     }
   });
-  const openEventsDetails = (evento) => {
-    navigate(`/eventos/${evento.id}`, { state: { evento } });
-    }
 
   const showLogo = (
     <img src={logo} alt="Logo" onClick={() => (location.href = "/")} />
   );
+
+  const openEventsDetails = (evento) => {
+    navigate(`/eventos/${evento.id}`, { state: { evento } });
+  };
+
 
   const deleteEvent = useCallback(
     (id) => {
@@ -76,13 +80,6 @@ export function EventProvider({ children }) {
     },
     [eventos]
   );
-
-  useEffect(() => {
-    if (loggedInUserJSON) {
-      setLoggedInUser(loggedInUserJSON);
-      setIsLogged(true);
-    }
-  }, [isLogged, loggedInUser]);
 
   const handleLogOut = () => {
     setIsLogged(false);
@@ -96,6 +93,13 @@ export function EventProvider({ children }) {
     e.preventDefault();
     setShowForm(!showForm);
   };
+
+  useEffect(() => {
+    if (loggedInUserJSON) {
+      setLoggedInUser(loggedInUserJSON);
+      setIsLogged(true);
+    }
+  }, [isLogged, loggedInUser]);
 
   return (
     <EventContext.Provider
@@ -111,6 +115,7 @@ export function EventProvider({ children }) {
         showLogo,
         usuarios,
         openEventsDetails,
+        showNavbar,
         setCurrentEvent,
         setUsuarios,
         setEventos,
@@ -121,6 +126,7 @@ export function EventProvider({ children }) {
         setCustomClassNavBar,
         setShowComponentsUserPage,
         deleteEvent,
+        setShowNavbar,
       }}
     >
       {children}

@@ -6,7 +6,7 @@ import styles from "./styles.module.css";
 import CelebrationOutlinedIcon from '@mui/icons-material/CelebrationOutlined';
 
 export function EventsPage() {
-  const { eventos, setEventos, openEventsDetails} = useEventsBuilder();
+  const { eventos, setEventos, openEventsDetails, setShowNavbar} = useEventsBuilder();
 
   useEffect(() => {
     if (eventos.length) {
@@ -15,6 +15,7 @@ export function EventsPage() {
   }, [eventos]);
   
   useEffect(() => {
+    setShowNavbar(true);
     const eventosLocalStorage = JSON.parse(localStorage.getItem('eventos'));
     setEventos(eventosLocalStorage);
   }, []);

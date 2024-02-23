@@ -27,7 +27,7 @@ export function UserAccount() {
         cpf: loggedInUserJSON.cpf,
         nome_estabelecimento: loggedInUserJSON.nome_estabelecimento,
         email: loggedInUserJSON.email,
-        senha: loggedInUserJSON.senha,
+        senha: "",
         imagem: loggedInUserJSON.imagem,
       });
     }
@@ -35,21 +35,29 @@ export function UserAccount() {
 
   const onConfirmButtonClick = (e) => {
     e.preventDefault();
-    if(loggedInUserJSON.senha === cadastro.senha){
-      const updateUsuario =  {
-        ...cadastro
-      }
-      setUsuarios( (prevUsuarios) => 
-        prevUsuarios.map((user) => (user.id === cadastro.id ? updateUsuario : user))
-      );
+  
+    if (loggedInUserJSON.senha === cadastro.senha) {
+      const updateUsuario = usuarios.map((user) => (user.id === cadastro.id ? cadastro : user));
+  
+      setUsuarios(updateUsuario);
       localStorage.setItem('loggedInUser', JSON.stringify(cadastro));
-      localStorage.setItem('usuarios', JSON.stringify({...usuarios, ...updateUsuario}));
+      localStorage.setItem('usuarios', JSON.stringify(updateUsuario));
+  
       toast.success("Conta atualizada com sucesso");
-      return
+  
+      return;
     }
+  
     toast.error("Senha Incorreta");
+  };
+
+  const deleteAccount = () => {
+    location.href = '/';
+    setUsuarios( (prevUsuarios) => 
+      prevUsuarios.filter((user) => user.id !== cadastro.id)
+    );
   }
-  console.log(usuarios)
+
   return (
     <div className={styles.container_content}>
       <div className={styles.container_form}>
@@ -151,6 +159,7 @@ export function UserAccount() {
               />
             </div>
             <div className={styles.button_Confirm}>
+              <button type="button" onClick={() => deleteAccount()}>Excluir conta</button>
               <button type="submit">Confirmar Mudanças</button>
             </div>
           </div>

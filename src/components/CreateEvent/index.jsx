@@ -1,8 +1,8 @@
+import { useState, useEffect } from "react";
 import { toast } from 'react-toastify';
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
-import { useState, useEffect } from "react";
-import { formatDateForInput, loggedInUserJSON } from "../../utils/utils";
-import { minDate, maxDate } from '../../utils/utils';
+import { formatDateForInput, loggedInUserJSON, minDate, maxDate } from "../../utils/utils";
+import { InputForm } from "../InputForm";
 import 'react-toastify/dist/ReactToastify.css';
 import styles from "./styles.module.css";
 
@@ -36,7 +36,9 @@ export function CreateEvent() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+  
     if (currentEvent.id) {
+      // Atualização de evento existente
       if (cadastroEvento.imagem instanceof File) {
         // Se uma nova imagem foi fornecida durante a atualização
         const reader = new FileReader();
@@ -53,6 +55,7 @@ export function CreateEvent() {
               event.id === currentEvent.id ? updatedEvent : event
             )
           );
+          localStorage.setItem("eventos", JSON.stringify(updatedEvent));
           toggleForm(event);
           toast.success("Evento atualizado com sucesso");
         };
@@ -66,16 +69,16 @@ export function CreateEvent() {
             event.id === currentEvent.id ? updatedEvent : event
           )
         );
+        localStorage.setItem("eventos", JSON.stringify(updatedEvent));
         toggleForm(event);
         toast.success("Evento atualizado com sucesso");
       }
     } else {
-      // criando novo evento
+      // Criação de novo evento
       const reader = new FileReader();
       reader.readAsDataURL(cadastroEvento.imagem);
       reader.onloadend = function () {
         const base64data = reader.result;
-
         const novoEvento = {
           id: eventos.length + 1,
           usuarioId: cadastro.id,
@@ -91,11 +94,12 @@ export function CreateEvent() {
           ingressos_camarote: cadastroEvento.ingressos_camarote,
         };
         setEventos((prevEventos) => [...prevEventos, novoEvento]);
+        localStorage.setItem("eventos", JSON.stringify(novoEvento));
         toggleForm(event);
         toast.success("Evento criado com sucesso");
-
       };
     }
+  
     setCadastroEvento({
       nome: "",
       usuarioId: 0,
@@ -123,6 +127,7 @@ export function CreateEvent() {
       ingressos_camarote: 0,
     });
   };
+  
 
   const handleDateChange = (e) => {
     const inputDate = new Date(e.target.value);
@@ -186,6 +191,7 @@ export function CreateEvent() {
     }
   }, []);
 
+  console.log(currentEvent.imagem)
   return (
     <div className={styles.container_create_event_page}>
       <form
@@ -196,7 +202,7 @@ export function CreateEvent() {
       >
         <div className={styles.form_titulo_create_event_page}>
           {!currentEvent.id
-          ? <h1>Criar novo evento</h1>
+          ? <h1>Criar evento</h1>
           : <h1>Atualizar evento</h1>}
         </div>
         <div className={styles.form_create_event_page}>
@@ -207,7 +213,6 @@ export function CreateEvent() {
                 required
                 type="file"
                 name="imagem"
-                id=""
                 accept="image/*"
                 placeholder="Insira a imagem do evento"
                 onChange={(e) =>
@@ -241,7 +246,6 @@ export function CreateEvent() {
                 className={styles.input_create_event}
                 type="text"
                 name="nome"
-                id=""
                 placeholder="Festa de aniversário"
                 onChange={(e) =>
                   setCadastroEvento({ ...cadastroEvento, nome: e.target.value })
@@ -256,7 +260,6 @@ export function CreateEvent() {
                 className={styles.input_create_event}
                 type="text"
                 name="local"
-                id=""
                 placeholder="Praça de eventos"
                 onChange={(e) =>
                   setCadastroEvento({
@@ -291,7 +294,6 @@ export function CreateEvent() {
                 className={styles.input_create_event}
                 type="time"
                 name="horario"
-                id=""
                 placeholder="20:00"
                 onChange={(e) =>
                   setCadastroEvento({
@@ -312,9 +314,9 @@ export function CreateEvent() {
                 className={styles.input_create_event}
                 type="number"
                 name="ingressos_pista"
-                id=""
                 placeholder="100"
-                onChange={handleIngressosChange}
+                id="ingressos_pista_input"
+                onChange={(e) => handleIngressosChange(e)}
               />
             </div>
             <div className={styles.container_input}>

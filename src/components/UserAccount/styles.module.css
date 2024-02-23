@@ -82,12 +82,13 @@
 }
 
 .button_Confirm{
-
+    width: 38%;
+    display: flex;
     margin: auto 0;
 }
 
-.button_Confirm > button{
-    width: 100%;
+.button_Confirm > button:last-of-type{
+    width: 60%;
     height: 4vh;
     margin: auto;
     border: none;
@@ -96,4 +97,24 @@
     padding: 6px;
     color: white;
     cursor: pointer;
+}
+
+.button_Confirm > button:first-of-type{
+    margin-right: 10px;
+    width: 26%;
+    height: 4vh;
+    margin: auto;
+    padding: 4px;
+    border: none;
+    background-color: transparent;
+    padding: 6px;
+    color: red;
+    cursor: pointer;
+    border-bottom: 1px solid red;
+}
+
+.button_Confirm > button:first-of-type:hover{
+    color: white;
+    background-color: red;
+    border-radius: 5px;
 }

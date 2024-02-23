@@ -6,12 +6,15 @@ import { PaymentContainer } from "../../components/TicketContainer";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";
 import PersonPinOutlinedIcon from '@mui/icons-material/PersonPinOutlined';
+import { useEffect } from "react";
 
 export function EventsDetailsPage() {
-  const { usuarios } = useEventsBuilder();
+  const { usuarios, setShowNavbar } = useEventsBuilder();
   const location = useLocation();
   const currentEvents = location.state.evento;
-
+  useEffect(() => {
+    setShowNavbar(false)
+  })
   const donoEvento = usuarios.filter(
     (user) => user.id === currentEvents.usuarioId
   );
