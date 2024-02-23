@@ -9,26 +9,15 @@ import { NavBar } from './components/NavBar'
 import { UserPage } from './pages/UserPage'
 import { EventsDetailsPage } from './pages/EventsDetailsPage'
 import { PaymentPage } from './pages/PaymentPage'
+import { RoutesApp } from './routes'
+// import { Provider } from 'react-redux';
+// import Reactotron from 'reactotron-react-js'; // Configurações do Reactotron
+// import store from './store'; // Importe sua store
 
 function App() {
 
   return (
-    <Router>
-      <div className="container_geral">
-        <EventProvider>
-        <NavBar />
-          <Routes>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/reset" element={<ResetPage />} />
-            <Route path="/" element={<EventsPage />} />
-            <Route path="/minha-conta" element={<UserPage />} />
-            <Route path="/eventos/:id" element={<EventsDetailsPage />} />
-            <Route path="/pagamento" element={<PaymentPage />} />
-          </Routes>
-        </EventProvider>
-      </div>
-    </Router>
+    <RoutesApp />
   )
 }
 
