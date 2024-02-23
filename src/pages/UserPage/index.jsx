@@ -5,11 +5,7 @@ import { UserAccount } from "../../components/UserAccount";
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 import styles from "./styles.module.css";
 
-
-
-
 export function UserPage() {
-
 
     const { showComponentsUserPage } = useEventsBuilder();
     const renderComponent = () => {
