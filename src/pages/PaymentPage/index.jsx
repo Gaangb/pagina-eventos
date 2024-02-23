@@ -13,8 +13,7 @@ export function PaymentPage() {
     Nome: "",
     Cpf: "",
     Email: "",
-  }
-  )
+  });
 
   useEffect(() => {
     const myTimeout = setInterval(() => {
@@ -36,17 +35,9 @@ export function PaymentPage() {
     seconds
   ).padStart(2, "0")}`;
 
-  const handleSubimit = (e) => {
-    e.preventdefault
-    setMeuIngresso({
-      ...meuIngresso,
-      Nome: e.target[0].value,
-      Cpf: e.target[1].value,
-      Email: e.target[2].value
-    })
-    console.log(meuIngresso)
-  }
-
+  const [codigoPagamento, setCodigoPagamento] = useState(
+    "jxllksdf1334jfkal1231l4fjd"
+  );
 
   return (
     <div className={styles.container_geral}>
@@ -57,7 +48,7 @@ export function PaymentPage() {
         <div className={styles.content_details}>
           <div>
             <h3>Preencha os campos abaixo e efetue o pagamento</h3>
-            <form action="" className={styles.form_geral} onSubmit={handleSubimit}>
+            <form action="" className={styles.form_geral}>
               <div className={styles.form_top}>
                 <div>
                   <label htmlFor="">Nome Completo</label>
@@ -75,21 +66,23 @@ export function PaymentPage() {
             </form>
           </div>
           <div className={styles.content_payment}>
-            <div>
-              <h3>Resumo do pagamento</h3>
-            </div>
-            <div className={styles.content_payment_top}>
+            <div className={styles.content_payment_details}>
               <div>
-                <p>Pista: {purshaseDetails.quantityPista}</p>
+                <h3>Resumo do pagamento</h3>
               </div>
-              <div>
-                <p>Camarote: {purshaseDetails.quantityCamarote}</p>
+              <div className={styles.content_payment_top}>
+                <div>
+                  <p>Pista: {purshaseDetails.quantityPista}</p>
+                </div>
+                <div>
+                  <p>Camarote: {purshaseDetails.quantityCamarote}</p>
+                </div>
               </div>
-            </div>
-            <div className={styles.content_payment_bottom}>
-              <p>Total </p>
-              <p>R${purshaseDetails.payment},00</p>
-              <button type="submit" onClick={handleSubimit}>Efetuar pagamento</button>
+              <div className={styles.content_payment_bottom}>
+                <p>Total </p>
+                <p>R${purshaseDetails.payment},00</p>
+                <button type="submit">Efetuar pagamento</button>
+              </div>
             </div>
             <div className={styles.payment_timer}>
               <div>
@@ -107,9 +100,33 @@ export function PaymentPage() {
           </div>
         </div>
         {
-          <div>
-            <h1>qrcode aqui</h1>
-            <QRCode value="https://www.example.com" />
+          <div className={styles.container_content_qrcode}>
+            <div>
+              <h2>Utilize o QR Code abaixo para efetuar o pagamento</h2>
+            </div>
+            <div className={styles.content_qrcode}>
+              <div>
+                <QRCode value={codigoPagamento} />
+                <div>
+                  <p>Como pagar?</p>
+                  <ul>
+                    <li>Copie o QR Code</li>
+                    <li>Abra o aplicativo de pagamento</li>
+                    <li>Selecione a opção pagar com QR Code</li>
+                    <li>Confirme as informações e finalize a compra</li>
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <span>Ou copie o código abaixo</span>
+                <input
+                  type="text"
+                  value={codigoPagamento}
+                  readOnly
+                  className={styles.paymentCodeInput}
+                />
+              </div>
+            </div>
           </div>
         }
       </div>
