@@ -1,4 +1,5 @@
 import styles from "./styles.module.css";
+import { ToastContainer, toast } from 'react-toastify';
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 import logo from "../../assets/logo.png"
 import { CreateEvent } from "../CreateEvent";
@@ -27,6 +28,8 @@ export function NavBar() {
 
     return (
         <>
+        <ToastContainer />
+
             <div className={styles[customClassNavBar]}>
                 <img src={logo} alt="Logo" onClick={() => location.href = "/"} />
                 <input type="text" name="" id="" placeholder="Pesquise" />
