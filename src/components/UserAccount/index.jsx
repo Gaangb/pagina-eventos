@@ -5,6 +5,7 @@ import { loggedInUserJSON } from "../../utils/utils";
 
 import styles from "./styles.module.css";
 import SettingsIcon from "@mui/icons-material/Settings";
+import { toast } from "react-toastify";
 
 export function UserAccount() {
   const { usuarios, setUsuarios } = useEventsBuilder();
@@ -21,6 +22,7 @@ export function UserAccount() {
   useEffect(() => {
     if (loggedInUserJSON) {
       setCadastro({
+        id: loggedInUserJSON.id,
         nome: loggedInUserJSON.nome,
         cpf: loggedInUserJSON.cpf,
         nome_estabelecimento: loggedInUserJSON.nome_estabelecimento,
@@ -31,10 +33,27 @@ export function UserAccount() {
     }
   }, []);
 
+  const onConfirmButtonClick = (e) => {
+    e.preventDefault();
+    if(loggedInUserJSON.senha === cadastro.senha){
+      const updateUsuario =  {
+        ...cadastro
+      }
+      setUsuarios( (prevUsuarios) => 
+        prevUsuarios.map((user) => (user.id === cadastro.id ? updateUsuario : user))
+      );
+      localStorage.setItem('loggedInUser', JSON.stringify(cadastro));
+      localStorage.setItem('usuarios', JSON.stringify({...usuarios, ...updateUsuario}));
+      toast.success("Conta atualizada com sucesso");
+      return
+    }
+    toast.error("Senha Incorreta");
+  }
+  console.log(usuarios)
   return (
     <div className={styles.container_content}>
       <div className={styles.container_form}>
-        <form action="submit" className={styles.form_geral}>
+        <form action="submit" onSubmit={onConfirmButtonClick} className={styles.form_geral}>
           <div className={styles.container_titulo}>
             <h1>
               <SettingsIcon />
@@ -122,7 +141,6 @@ export function UserAccount() {
             <div className={styles.flex_column}>
               <label>Senha</label>
               <input
-                value={""}
                 type="password"
                 name=""
                 id=""
