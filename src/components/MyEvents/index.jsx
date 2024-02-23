@@ -8,7 +8,7 @@ import CardEvent from "../CardEvent";
 import CelebrationOutlinedIcon from '@mui/icons-material/CelebrationOutlined';
 
 export function MyEvents() {
-    const { usuarios, eventos, setEventos } = useEventsBuilder();
+    const { usuarios, eventos, setEventos, openEventsDetails } = useEventsBuilder();
 
     const [cadastro, setCadastro] = useState({
         id: 0,
@@ -40,7 +40,7 @@ export function MyEvents() {
             <h1><CelebrationOutlinedIcon />Meus Eventos</h1>
             <div className={styles.container_content}>
                 {eventosFiltrados.map((event, index) => (
-                    <CardEvent key={index} {...event} />
+                    <CardEvent key={index} {...event} onClick={() => {openEventsDetails({...event})}}/>
                 ))}
             </div>
         </div>
