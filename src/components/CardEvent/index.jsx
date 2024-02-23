@@ -96,10 +96,12 @@ export default function CardEvent({
   };
 
   return (
-    <div className={styles.container_geral_events_page} >
-      <div className={styles.container_imagem_titulo_events_page}>
-        <img src={imagem} alt="" />
-        <div className={styles.container_titulo_events_page}>
+    <div className={styles.container_geral} >
+      <div className={styles.container_imagem_titulo}>
+        <div>
+          <img src={imagem} alt="" />
+        </div>
+        <div className={styles.container_titulo}>
           <h1>{nome}</h1>
           <p>
             <RoomOutlinedIcon /> {local}

@@ -1,39 +1,50 @@
-.container_geral_events_page{
+.container_geral {
   width: 24vw;
-  height: 26vh;
+  height: 22vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid  rgba(71, 38, 71);
+  align-items: center;
+  border: 1px solid rgba(71, 38, 71);
   margin-top: 20px;
-  margin-left: 20px;
   border-radius: 6px;
 }
 
-.container_geral_events_page > div:first-of-type {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  margin: 0px 40px;
+.container_imagem_titulo > div{
+  height: 16vh;
 }
 
-.container_titulo_events_page{
+.container_imagem_titulo > div > img {
+  height: 80%;
+  margin-top: 10px;
+}
+
+.container_geral > div:first-of-type {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+  margin: 0px 10px;
+}
+
+.container_titulo {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  cursor: pointer;
+  margin-left: 10px;
 }
 
-.card_footer{
+.card_footer {
   display: flex;
   width: 90%;
   justify-content: space-between;
+  height: 20%;
 }
 
-.card_footer p{
+.card_footer p {
   line-height: 21px;
   height: calc(2 * 21px);
-  white-space: nowrap;    
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 75%;
@@ -61,27 +72,24 @@
   margin-left: 4px;
 }
 
-.card_footer_buttons{
+.card_footer_buttons {
   display: flex;
   justify-content: space-between;
 }
 
-.container_geral_events_page > div > img{
-  max-width:200px;
-  max-height:150px;
-  width: auto;
-  height: auto;
-  margin-top: 10px;
+.card_footer_buttons > button {
+  height: 15px;
+  width: 30px;
 }
 
-.container_geral_events_page > div:last-child{
+.container_geral > div:last-child {
   display: flex;
   justify-content: flex-start;
-  margin-left: 40px;
-  margin-top: 12px;
+  margin-left: 16px;
+  width: 100%;
 }
 
-.action_button{
+.action_button {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -91,47 +99,24 @@
   display: flex;
 }
 
-
 @media screen and (max-width: 768px) {
-  .container_geral_events_page{
-    width: 90vw;
-    height: 30vh;
+  .container_geral {
+    width: 88vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: rgba(255, 255, 255, 0.4);
-    margin-top: 20px;
-    margin-left: 5px;
+    margin-top: 1px;
     border-radius: 6px;
   }
 
-  @media screen and (max-width: 768px) {
-
-    .container_geral_events_page{
-      align-items: center;
-    }
-    
-    .container_imagem_titulo_events_page{
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: space-between;
-
-    }
-
-    .container_titulo_events_page{
-      margin-left: 20px;
-    }
-
-    .hide_on_phone{
-      display: none;
-    }
-
-    .container_geral_events_page > div:first-of-type {
-      margin: 0px;
-    }
-
-    
+  .container_imagem_titulo {
+    display: flex;
+    justify-content: space-around;
   }
 
-  
+  .container_titulo {
+    margin-left: 8px;
+  }
+
 }
