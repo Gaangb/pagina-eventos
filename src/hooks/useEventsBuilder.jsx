@@ -72,6 +72,19 @@ export function EventProvider({ children }) {
     navigate(`/eventos/${evento.id}`, { state: { evento } });
   };
 
+  const deleteUser = useCallback(
+
+    (id) => {
+      const updatedUsers = usuarios.filter((user) => user.id !== id);
+      setUsuarios(updatedUsers);
+       localStorage.setItem("usuarios", JSON.stringify(updatedUsers));
+
+      setIsLogged(false)
+      location.href = '/'
+      localStorage.removeItem('loggedInUser')
+    },
+    [usuarios]
+  )
 
   const deleteEvent = useCallback(
     (id) => {
@@ -126,6 +139,7 @@ export function EventProvider({ children }) {
         setCustomClassNavBar,
         setShowComponentsUserPage,
         deleteEvent,
+        deleteUser,
         setShowNavbar,
       }}
     >

@@ -6,10 +6,12 @@ import { loggedInUserJSON } from "../../utils/utils";
 import styles from "./styles.module.css";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { toast } from "react-toastify";
+import AlertDialogModal from "../AlertDialogModal";
 
 export function UserAccount() {
-  const { usuarios, setUsuarios } = useEventsBuilder();
-
+  const { usuarios, setUsuarios, deleteUser } = useEventsBuilder();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [usuarioToDeleteId, setUsuarioToDeleteId] = useState(null);
   const [cadastro, setCadastro] = useState({
     nome: "",
     cpf: "",
@@ -51,11 +53,14 @@ export function UserAccount() {
     toast.error("Senha Incorreta");
   };
 
+  const onDeleteAccount = (id) => {
+    setModalOpen(!modalOpen);
+    setUsuarioToDeleteId(id);
+  }
+
   const deleteAccount = () => {
-    location.href = '/';
-    setUsuarios( (prevUsuarios) => 
-      prevUsuarios.filter((user) => user.id !== cadastro.id)
-    );
+    deleteUser(usuarioToDeleteId);
+    toast.success("Conta deletada com sucesso");
   }
 
   return (
@@ -159,12 +164,19 @@ export function UserAccount() {
               />
             </div>
             <div className={styles.button_Confirm}>
-              <button type="button" onClick={() => deleteAccount()}>Excluir conta</button>
+              <button type="button" onClick={() => onDeleteAccount(cadastro.id)}>Excluir conta</button>
               <button type="submit">Confirmar Mudanças</button>
             </div>
           </div>
         </form>
       </div>
+      {modalOpen && (
+        <AlertDialogModal
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+          handleDelete={deleteAccount}
+          handleClose={() => setModalOpen(false)}
+        />)}
     </div>
   );
 }

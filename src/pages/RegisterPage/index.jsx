@@ -26,8 +26,18 @@ export function RegisterPage() {
     }
     else {
 
-      setUsuarios([...usuarios, { id: usuarios.length + 1, nome: cadastro.nome, email: cadastro.email, senha: cadastro.senha, cpf: cadastro.cpf, nome_estabelecimento: cadastro.nome_estabelecimento, imagem: cadastro.imagem }]);
-
+      setUsuarios(prevUsuarios => [
+        ...prevUsuarios,
+        {
+          id: prevUsuarios.length > 0 ? prevUsuarios[prevUsuarios.length - 1].id + 1 : 1,
+          nome: cadastro.nome,
+          email: cadastro.email,
+          senha: cadastro.senha,
+          cpf: cadastro.cpf,
+          nome_estabelecimento: cadastro.nome_estabelecimento,
+          imagem: cadastro.imagem
+        }
+      ]);
       alert("Conta criada com sucesso");
       location.href = '/login'
     }
