@@ -80,7 +80,7 @@ export function CreateEvent() {
       reader.onloadend = function () {
         const base64data = reader.result;
         const novoEvento = {
-          id: eventos.length + 1,
+          id: eventos.length > 0 ? eventos[eventos.length - 1].id + 1 : 1,
           usuarioId: cadastro.id,
           nome: cadastroEvento.nome,
           local: cadastroEvento.local,
@@ -94,7 +94,7 @@ export function CreateEvent() {
           ingressos_camarote: cadastroEvento.ingressos_camarote,
         };
         setEventos((prevEventos) => [...prevEventos, novoEvento]);
-        localStorage.setItem("eventos", JSON.stringify(novoEvento));
+        localStorage.setItem("eventos", JSON.stringify([...eventos, novoEvento]));
         toggleForm(event);
         toast.success("Evento criado com sucesso");
       };
