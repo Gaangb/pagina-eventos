@@ -1,7 +1,10 @@
-import styles from "./styles.module.css";
+import { toast } from 'react-toastify';
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 import { useState, useEffect } from "react";
 import { formatDateForInput, loggedInUserJSON } from "../../utils/utils";
+
+import 'react-toastify/dist/ReactToastify.css';
+import styles from "./styles.module.css";
 
 export function CreateEvent() {
   const { eventos, setEventos, toggleForm, currentEvent, setCurrentEvent } =
@@ -52,6 +55,7 @@ export function CreateEvent() {
             )
           );
           toggleForm(event);
+          toast.success("Evento atualizado com sucesso");
         };
       } else {
         const updatedEvent = {
@@ -64,9 +68,10 @@ export function CreateEvent() {
           )
         );
         toggleForm(event);
+        toast.success("Evento atualizado com sucesso");
       }
     } else {
-      // novo evento
+      // criando novo evento
       const reader = new FileReader();
       reader.readAsDataURL(cadastroEvento.imagem);
       reader.onloadend = function () {
@@ -88,6 +93,8 @@ export function CreateEvent() {
         };
         setEventos((prevEventos) => [...prevEventos, novoEvento]);
         toggleForm(event);
+        toast.success("Evento criado com sucesso");
+
       };
     }
     setCadastroEvento({
@@ -180,9 +187,6 @@ export function CreateEvent() {
     }
   }, []);
 
-  console.log("cadastro evento  : ", cadastroEvento);
-
-  console.log("eventos  : " + eventos);
   return (
     <div className={styles.container_create_event_page}>
       <form
@@ -192,13 +196,16 @@ export function CreateEvent() {
         encType="multipart/form-data"
       >
         <div className={styles.form_titulo_create_event_page}>
-          <h1>Criar novo evento</h1>
+          {!currentEvent.id
+          ? <h1>Criar novo evento</h1>
+          : <h1>Atualizar evento</h1>}
         </div>
         <div className={styles.form_create_event_page}>
           <div>
             <div className={styles.container_input}>
               <label htmlFor="imagem">Escolha sua imagem</label>
               <input
+                required
                 type="file"
                 name="imagem"
                 id=""
@@ -230,6 +237,7 @@ export function CreateEvent() {
             <div className={styles.container_input}>
               <label htmlFor="nome">Nome do evento</label>
               <input
+                required
                 value={cadastroEvento.nome}
                 className={styles.input_create_event}
                 type="text"
@@ -244,6 +252,7 @@ export function CreateEvent() {
             <div className={styles.container_input}>
               <label htmlFor="local">Local do evento</label>
               <input
+                required
                 value={cadastroEvento.local}
                 className={styles.input_create_event}
                 type="text"
@@ -263,6 +272,9 @@ export function CreateEvent() {
             <div className={styles.container_input}>
               <label htmlFor="data">Data do evento</label>
               <input
+                required
+                min="2023-12-01"
+                max="2024-12-31"
                 value={formatDateForInput(cadastroEvento.data)}
                 className={styles.input_create_event}
                 type="date"
@@ -275,6 +287,7 @@ export function CreateEvent() {
             <div className={styles.container_input}>
               <label htmlFor="horario">Horario do evento</label>
               <input
+                required
                 value={cadastroEvento.horario}
                 className={styles.input_create_event}
                 type="time"
@@ -296,6 +309,8 @@ export function CreateEvent() {
                 Quantidade ingressos pista
               </label>
               <input
+                required
+                min="0"
                 value={cadastroEvento.ingressos_pista}
                 className={styles.input_create_event}
                 type="number"
@@ -349,6 +364,7 @@ export function CreateEvent() {
           <div className={styles.container_description}>
             <label htmlFor="descricao">Descrição do evento</label>
             <textarea
+              required
               value={cadastroEvento.descricao}
               className={styles.input_create_event}
               name="descricao"
@@ -366,10 +382,10 @@ export function CreateEvent() {
             <button type="submit" onClick={handleCancelButton}>
               Cancelar
             </button>
-            {currentEvent ? (
-              <button type="submit">Atualizar evento</button>
-            ) : (
+            {!currentEvent.id ? (
               <button type="submit">Criar evento</button>
+            ) : (
+              <button type="submit">Atualizar evento</button>
             )}
           </div>
         </div>
