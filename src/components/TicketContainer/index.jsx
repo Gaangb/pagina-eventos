@@ -71,12 +71,12 @@ export function PaymentContainer({ preco_pista, preco_camarote, evento }) {
                 <p>Total </p>
                 <p>R$ {purshaseDetails.payment},00</p>
               </div>
-              <button onClick={handleBuyTickets}>Comprar ingressos</button>
+              <button onClick={handleBuyTickets}>Comprar</button>
             </div>
           </div>
         ) : (
           <div className={styles.content_total_disabled}>
-            <button disabled>Selecione pelo menos um ingresso</button>
+            <button disabled>Selecione um ingresso</button>
           </div>
         )}
       </div>
