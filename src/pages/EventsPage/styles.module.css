@@ -1,6 +1,6 @@
 .container_geral_events_page {
     background-color: rgba(238, 130, 238);
-    height: 100vh;
+    height: 92vh; 
 }
 
 .container_events_page.modal_open {
@@ -18,7 +18,7 @@
 }
 
 .container_events_page > h1{
-    width: 50%;
+    width: 100%;
     margin: auto;   
     display: flex;
     align-items: center;
@@ -28,20 +28,28 @@
 }
 
 .container_cards_events_page {
-    display: flex;
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr;
     flex-wrap: wrap;
     margin: auto;
     width: 84%;
-    height: 80%;
+    height: 80vh;
+    overflow-y: auto;
 }
 
 @media screen and (max-width: 768px) {
+
     .container_cards_events_page {
         margin-top: 0px;
-        width: 94%;
+        width: 90%;
         overflow-y: auto;
-        height: 90vh;
-        align-items: center;
-        justify-content: center;
-    }    
+        overflow-x: hidden;
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+        height: 76vh;
+    }   
+    
+    .container_events_page > h1{
+        font-size: 30px;
+    }
 }
