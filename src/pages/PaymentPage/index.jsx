@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { toast } from 'react-toastify';
 import QRCode from "qrcode.react";
 
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
@@ -31,16 +32,16 @@ export function PaymentPage() {
   const handleBuyTickets = (e) => {
     e.preventDefault();
     if(meuIngresso.Cpf.length < 11){
-      alert("CPF/CNPJ inválido")
+      toast.error("Cpf inválido")
       return
     } else if(meuIngresso.Email === ""){
-      alert("Email inválido")
+      toast.error("Email inválido")
       return
     } else if(meuIngresso.Nome === ""){
-      alert("Nome inválido")
+      toast.error("Nome inválido")
       return
     } else {
-      alert("Ingresso vendido com sucesso");
+      toast.success("QR Code gerado com sucesso")
     }
     setEventos((prevEventos) =>
       prevEventos.map((event) => {
@@ -53,7 +54,6 @@ export function PaymentPage() {
       })
     );
     setCodigoPagamento(
-      
         meuIngresso.Cpf +
         meuIngresso.Nome +
         meuIngresso.Email +

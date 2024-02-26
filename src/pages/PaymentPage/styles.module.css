@@ -196,3 +196,51 @@
   width: 50%;
   margin-top: 10px;
 }
+
+@media screen and (max-width: 768px) {
+  .container_geral {
+    overflow-y: auto;
+    height: auto;
+  }
+
+  .content_details{
+    flex-direction: column;
+    width: 80vw;
+  }
+
+  .form_geral {
+    width: 100%;
+  }
+
+  .content_payment {
+    width: 80vw;
+  }
+
+  .content_payment_bottom > button {
+    width: 94%;
+  }
+
+  .content_payment_details{
+    margin-top: 8px;
+  }
+
+  .container_content_qrcode {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .container_content_qrcode > div:first-of-type > h2 {
+    font-size: 16px;
+  }
+  .content_qrcode >div:first-of-type > div {
+    margin-left: 20px;
+    font-size: 12px;
+  }
+  .content_qrcode > div:last-of-type {
+    width: 100%;
+  }
+
+  .content_qrcode > div:last-of-type > input {
+    padding: 4px;
+  }
+}
