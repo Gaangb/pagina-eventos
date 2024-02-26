@@ -15,7 +15,7 @@
 }
 
 .container_register_page > img {
-  width: 200px;
+  width: 100px;
   position: absolute;
   top: 10px;
   left: 10px;
@@ -30,7 +30,7 @@
 
 .form_titulo_register_page {
   background-color: rgba(71, 38, 71);
-  height: 12vh;
+  height: 10vh;
   color: white;
   display: flex;
   justify-content: center;
@@ -61,12 +61,12 @@
 .form_register_page {
   display: flex;
   flex-direction: column;
-  padding: 20px 50px;
+  padding: 10px 30px;
 }
 
 .form_register_page input {
   height: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   background-color: transparent;
   border: none;
   border-bottom: 2px solid white;
@@ -77,13 +77,13 @@
 }
 
 .form_register_page button {
-  height: 50px;
+  height: 40px;
   background-color: rgba(238, 130, 238);
   border: none;
   color: white;
   font-size: 20px;
   font-weight: 400;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   cursor: pointer;
 }
 
