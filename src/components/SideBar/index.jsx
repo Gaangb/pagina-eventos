@@ -5,8 +5,9 @@ import { loggedInUserJSON } from "../../utils/utils";
 import styles from "./styles.module.css";
 
 export function SideBar() {
-  const [selectedButton, setSelectedButton] = useState("UserAccount");
   const { setShowComponentsUserPage, handleLogOut } = useEventsBuilder();
+  const [selectedButton, setSelectedButton] = useState("UserAccount");
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const changeComponente = useCallback((e, buttonName) => {
     e.preventDefault();
@@ -43,7 +44,11 @@ export function SideBar() {
         <button
           style={
             selectedButton === "UserAccount"
-              ? { border: "1px solid white", borderRadius: "5px" }
+              ? {
+                  borderTop: "1px solid white",
+                  borderBottom: "1px solid white",
+                  fontWeight: "bold",
+                }
               : {}
           }
           onClick={(e) => changeComponente(e, "UserAccount")}
@@ -53,7 +58,11 @@ export function SideBar() {
         <button
           style={
             selectedButton === "MyEvents"
-              ? { border: "1px solid white", borderRadius: "5px" }
+              ? {
+                  borderTop: "1px solid white",
+                  borderBottom: "1px solid white",
+                  fontWeight: "bold",
+                }
               : {}
           }
           onClick={(e) => changeComponente(e, "MyEvents")}
@@ -70,7 +79,9 @@ export function SideBar() {
         </button>
         <button
           className={selectedButton === "Sair" ? styles.selectedButton : ""}
-          onClick={() => { handleLogOut() }}
+          onClick={() => {
+            handleLogOut();
+          }}
         >
           Sair
         </button>
