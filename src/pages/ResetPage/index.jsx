@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 
 import styles from "./styles.module.css";
 
 export function ResetPage() {
-  const { usuarios, showLogo, setCustomClassNavBar } = useEventsBuilder();
-  const [credenciais, setCredenciais] = useState({ email: "", cpf: "" });
+  const { usuarios, setUsuarios, showLogo, setCustomClassNavBar } = useEventsBuilder();
+  const [credenciais, setCredenciais] = useState({ email: "", cpf: "" , senha: ""});
   const [isRight, setIsRight] = useState(false);
 
   useEffect(() => {
@@ -18,16 +19,37 @@ export function ResetPage() {
       (user) => user.cpf === credenciais.cpf && user.email === credenciais.email
     );
     setIsRight(usuarioValido);
-    setCredenciais({ email: "", cpf: "" });
-    console.log(usuarioValido);
+    console.log("submit", usuarioValido);
     if (!usuarioValido) {
-      alert("Credenciais inválidas");
+      toast.error("Credenciais inválidas");
     }
   };
 
   const handleSavePassword = (event) => {
     event.preventDefault();
-    console.log("Credenciais inválidas");
+    
+    const usuarioValidoIndex = usuarios.findIndex(
+      (user) => user.cpf === credenciais.cpf && user.email === credenciais.email
+    );
+  
+    if (usuarioValidoIndex !== -1) {
+      // Encontrou um usuário válido
+      const updatedUsuarios = [...usuarios];
+      updatedUsuarios[usuarioValidoIndex] = {
+        ...usuarios[usuarioValidoIndex],
+        senha: credenciais.senha
+      };
+      setUsuarios(updatedUsuarios);
+      localStorage.setItem("usuarios", JSON.stringify(updatedUsuarios));
+      setCredenciais({ email: "", cpf: "", senha: "" });
+      toast.success("Senha alterada com sucesso!");
+      setTimeout(() => {
+        location.href = "/login";
+      }, 2000)
+
+    } else {
+      // adicionar toast de erro
+    }
   };
 
   return (
@@ -74,7 +96,8 @@ export function ResetPage() {
                 name="password"
                 id=""
                 placeholder="Digite a nova senha"
-                value=""
+               
+                onChange={(e) => setCredenciais({ ...credenciais, senha: e.target.value })}
               />
             )}
 
