@@ -48,7 +48,7 @@ export function EventsDetailsPage() {
           <PaymentContainer
             preco_camarote={currentEvents.preco_camarote}
             preco_pista={currentEvents.preco_pista}
-            evento={currentEvents.nome}
+            evento={currentEvents}
           />
         </div>
       </div>
