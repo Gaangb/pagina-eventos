@@ -6,8 +6,7 @@ import styles from "./styles.module.css";
 
 export function SideBar() {
   const [selectedButton, setSelectedButton] = useState("UserAccount");
-  const { showComponentsUserPage, setShowComponentsUserPage, usuarios } =
-    useEventsBuilder();
+  const { setShowComponentsUserPage, handleLogOut } = useEventsBuilder();
 
   const changeComponente = useCallback((e, buttonName) => {
     e.preventDefault();
@@ -71,10 +70,10 @@ export function SideBar() {
         </button>
         <button
           className={selectedButton === "Sair" ? styles.selectedButton : ""}
-          onClick={(e) => changeComponente(e, "Sair")}
+          onClick={() => { handleLogOut() }}
         >
           Sair
-        </button>{" "}
+        </button>
       </div>
     </div>
   );
