@@ -6,16 +6,15 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function AlertDialogModal({ modalOpen, setModalOpen, handleDelete, id }) {
-  const [open, setOpen] = useState(modalOpen);
+export default function AlertDialogModal({ modalOpen, setModalOpen, handleDelete, id, text, title }) {
 
   const handleClose = () => {
     setModalOpen(false);
   };
 
   const handleAgree = () => {
-    handleClose(); // Fecha o modal
-    handleDelete(); // Chama a função de delete
+    handleClose(); 
+    handleDelete();
   };
 
   return (
@@ -28,11 +27,11 @@ export default function AlertDialogModal({ modalOpen, setModalOpen, handleDelete
           aria-describedby="alert-dialog-description"
         >
           <DialogTitle id="alert-dialog-title">
-            {"Excluir evento?"}
+            {title}
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              Tem certeza que deseja excluir este evento? A ação não poderá ser desfeita.
+              {text}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
