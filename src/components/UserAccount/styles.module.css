@@ -28,8 +28,8 @@
 }
 
 .flex_row_img > img {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
 }
 
@@ -74,6 +74,7 @@
     background-color: transparent;
     padding: 6px;
     color: black;
+    font-size: 16px;
 }
 
 .flex_column{
@@ -81,14 +82,14 @@
     flex-direction: column;
 }
 
-.button_Confirm{
-    width: 38%;
+.button_confirm{
+    width: 34%;
     display: flex;
     margin: auto 0;
 }
 
-.button_Confirm > button:last-of-type{
-    width: 60%;
+.button_confirm > button:last-of-type{
+    width: 38%;
     height: 4vh;
     margin: auto;
     border: none;
@@ -99,9 +100,9 @@
     cursor: pointer;
 }
 
-.button_Confirm > button:first-of-type{
+.button_confirm > button:first-of-type{
     margin-right: 10px;
-    width: 26%;
+    width: 38%;
     height: 4vh;
     margin: auto;
     padding: 4px;
@@ -113,7 +114,7 @@
     border-bottom: 1px solid red;
 }
 
-.button_Confirm > button:first-of-type:hover{
+.button_confirm > button:first-of-type:hover{
     color: white;
     background-color: red;
     border-radius: 5px;

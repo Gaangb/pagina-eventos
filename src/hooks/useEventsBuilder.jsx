@@ -73,18 +73,17 @@ export function EventProvider({ children }) {
   };
 
   const deleteUser = useCallback(
-
     (id) => {
       const updatedUsers = usuarios.filter((user) => user.id !== id);
       setUsuarios(updatedUsers);
-       localStorage.setItem("usuarios", JSON.stringify(updatedUsers));
+      localStorage.setItem("usuarios", JSON.stringify(updatedUsers));
 
-      setIsLogged(false)
-      location.href = '/'
-      localStorage.removeItem('loggedInUser')
+      setIsLogged(false);
+      location.href = "/";
+      localStorage.removeItem("loggedInUser");
     },
     [usuarios]
-  )
+  );
 
   const deleteEvent = useCallback(
     (id) => {
