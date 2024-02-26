@@ -4,20 +4,20 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+
+import { EventProvider } from "../hooks/useEventsBuilder";
 import { LoginPage } from "../pages/LoginPage";
 import { RegisterPage } from "../pages/RegisterPage";
 import { ResetPage } from "../pages/ResetPage";
-import { EventProvider } from "../hooks/useEventsBuilder";
-import { useEventsBuilder } from "../hooks/useEventsBuilder";
 import { EventsPage } from "../pages/EventsPage";
-import { NavBar } from "../components/NavBar";
 import { UserPage } from "../pages/UserPage";
 import { EventsDetailsPage } from "../pages/EventsDetailsPage";
 import { PaymentPage } from "../pages/PaymentPage";
+import { NavBar } from "../components/NavBar";
 import { loggedInUserJSON } from "../utils/utils";
 
 function isLoggedIn() {
-  return loggedInUserJSON
+  return loggedInUserJSON;
 }
 
 export function RoutesApp() {
@@ -39,13 +39,6 @@ export function RoutesApp() {
                 isLoggedIn() ? <UserPage /> : <Navigate to="/login" replace />
               }
             />
-
-            {/* <Route
-              path="/pagamento"
-              element={
-                isLoggedIn() ? <PaymentPage /> : <Navigate to="/ " replace />
-              }
-            /> */}
           </Routes>
         </EventProvider>
       </div>
