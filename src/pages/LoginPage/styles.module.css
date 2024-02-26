@@ -4,7 +4,7 @@
   background-size: cover;
 }
 
-.container_login_page{
+.container_login_page {
   background-color: rgba(238, 130, 238, 0.4);
   height: 100vh;
   display: flex;
@@ -14,7 +14,7 @@
   position: relative;
 }
 
-.container_login_page > img{
+.container_login_page > img {
   width: 200px;
   position: absolute;
   top: 10px;
@@ -22,13 +22,13 @@
   cursor: pointer;
 }
 
-.form_geral_login_page{
+.form_geral_login_page {
   background-color: rgba(71, 38, 71, 0.6);
   min-height: 52vh;
   min-width: 40vw;
 }
 
-.form_titulo_login_page{
+.form_titulo_login_page {
   background-color: rgba(71, 38, 71);
   height: 12vh;
   color: white;
@@ -37,17 +37,18 @@
   align-items: center;
 }
 
-.form_login_page{
+.form_login_page {
   display: flex;
   flex-direction: column;
   padding: 20px 50px;
 }
 
-.form_login_page input, button{
+.form_login_page input,
+button {
   height: 50px;
 }
 
-.form_login_page input{
+.form_login_page input {
   margin-bottom: 50px;
   background-color: transparent;
   border: none;
@@ -58,7 +59,7 @@
   outline: none;
 }
 
-.form_login_page button{
+.form_login_page button {
   background-color: rgba(238, 130, 238);
   border: none;
   color: white;
@@ -68,43 +69,43 @@
   cursor: pointer;
 }
 
-.form_login_page div:first-of-type{
+.form_login_page div:first-of-type {
   display: flex;
   flex-direction: column;
 }
 
-.form_login_page div:first-of-type a{
+.form_login_page div:first-of-type a {
   text-align: center;
   color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
 }
 
-.form_login_page div:last-of-type{
+.form_login_page div:last-of-type {
   display: flex;
   color: white;
   margin-top: 10px;
 }
 
-.form_login_page div:last-of-type a{
+.form_login_page div:last-of-type a {
   color: white;
 }
 
 @media screen and (max-width: 768px) {
-  .container_login_page > img{
+  .container_login_page > img {
     width: 80px;
   }
 
-  .form_geral_login_page{
+  .form_geral_login_page {
     width: 90vw;
     height: 62vh;
     margin-top: -10px;
   }
 
-  .form_titulo_login_page{
+  .form_titulo_login_page {
     height: 10vh;
   }
 
-  .form_login_page{
+  .form_login_page {
     padding: 20px 30px;
   }
 }

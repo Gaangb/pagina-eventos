@@ -1,73 +1,73 @@
 .container_geral_register_page {
-    background: url("../../assets/background-login.jpg");
-    height: 100vh;
-    background-size: cover;
-  }
-  
-  .container_register_page{
-    background-color: rgba(238, 130, 238, 0.4);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-  }
+  background: url("../../assets/background-login.jpg");
+  height: 100vh;
+  background-size: cover;
+}
 
-  .container_register_page > img {
-    width: 200px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    cursor: pointer;
-  }
-  
-  .form_geral_register_page{
-    background-color: rgba(71, 38, 71, 0.6);
-    min-height: 40vh;
-    min-width: 40vw;
-  }
-  
-  .form_titulo_register_page{
-    background-color: rgba(71, 38, 71);
-    height: 12vh;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .form_register_page{
-    display: flex;
-    flex-direction: column;
-    padding: 20px 50px;
-  }
-  
-  .form_register_page input{
-    height: 50px;
-    margin-bottom: 50px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid white;
-    font-size: 20px;
-    padding: 4px;
-    color: white;
-    outline: none;
-  }
-  
-  .form_register_page button{
-    height: 50px;
-    background-color: rgba(238, 130, 238);
-    border: none;
-    color: white;
-    font-size: 20px;
-    font-weight: 400;
-    margin-bottom: 20px;
-    cursor: pointer;
-  }
-  
-  .form_register_page a{
-    text-align: center;
-    color: white;
-    margin-top: 14px;
-  }
+.container_register_page {
+  background-color: rgba(238, 130, 238, 0.4);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.container_register_page > img {
+  width: 200px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+}
+
+.form_geral_register_page {
+  background-color: rgba(71, 38, 71, 0.6);
+  min-height: 40vh;
+  min-width: 40vw;
+}
+
+.form_titulo_register_page {
+  background-color: rgba(71, 38, 71);
+  height: 12vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_register_page {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 50px;
+}
+
+.form_register_page input {
+  height: 50px;
+  margin-bottom: 50px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  font-size: 20px;
+  padding: 4px;
+  color: white;
+  outline: none;
+}
+
+.form_register_page button {
+  height: 50px;
+  background-color: rgba(238, 130, 238);
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.form_register_page a {
+  text-align: center;
+  color: white;
+  margin-top: 14px;
+}

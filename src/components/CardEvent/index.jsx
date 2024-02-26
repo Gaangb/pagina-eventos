@@ -84,7 +84,6 @@ export default function CardEvent({
   };
 
   const onDeleteButtonClick = (id) => {
-    // Chama o AlertDialogModal quando o botão de deletar for clicado
     setModalOpen(!modalOpen);
     setEventToDeleteId(id);
     console.log("deletar", modalOpen);
@@ -130,6 +129,7 @@ export default function CardEvent({
           setModalOpen={setModalOpen}
           handleDelete={handleDelete}
           handleClose={() => setModalOpen(false)}
+          title="Tem certeza que deseja excluir este evento? A ação não poderá ser desfeita."
         />
       )}
     </div>

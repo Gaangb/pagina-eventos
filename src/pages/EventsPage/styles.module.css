@@ -1,56 +1,55 @@
 .container_geral_events_page {
-    background-color: rgba(238, 130, 238);
-    height: 92vh; 
+  background-color: rgba(238, 130, 238);
+  height: 92vh;
 }
 
 .container_events_page.modal_open {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .container_events_page.modal_open::after {
-    pointer-events: none;
+  pointer-events: none;
 }
 
-.container_events_page > h1{
-    width: 100%;
-    margin: auto;   
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    padding-top: 10px;
+.container_events_page > h1 {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  padding-top: 10px;
 }
 
 .container_cards_events_page {
-    display: grid;
-    grid-template-columns: 3fr 3fr 3fr;
-    flex-wrap: wrap;
-    margin: auto;
-    width: 84%;
-    height: 80vh;
-    overflow-y: auto;
-    padding-bottom: 10px;
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 84%;
+  height: 80vh;
+  overflow-y: auto;
+  padding-bottom: 10px;
 }
 
 @media screen and (max-width: 768px) {
+  .container_cards_events_page {
+    margin-top: 0px;
+    width: 90%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    height: 76vh;
+  }
 
-    .container_cards_events_page {
-        margin-top: 0px;
-        width: 90%;
-        overflow-y: auto;
-        overflow-x: hidden;
-        grid-template-columns: 1fr;
-        grid-gap: 10px;
-        height: 76vh;
-    }   
-    
-    .container_events_page > h1{
-        font-size: 30px;
-    }
+  .container_events_page > h1 {
+    font-size: 30px;
+  }
 }
