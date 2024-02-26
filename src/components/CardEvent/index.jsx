@@ -8,6 +8,7 @@ import styles from "./styles.module.css";
 import DriveFileRenameOutlineOutlinedIcon from "@mui/icons-material/DriveFileRenameOutlineOutlined";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import AlertDialogModal from "../AlertDialogModal";
@@ -110,18 +111,17 @@ export default function CardEvent({
           <p>
             <CalendarMonthOutlinedIcon /> {data} - {horario}{" "}
           </p>
+          <div>
+            <VisibilityIcon />
+            <button onClick={onClick}>Detalhes do evento <ArrowForwardIosOutlinedIcon /></button>
+          </div>
         </div>
       </div>
       <div>
-        <div className={styles.card_footer}>
           <div className={styles.card_footer_buttons}>
             {RenderEditButton()}
             {RenderDeleteButton()}
           </div>
-          <div>
-            <button onClick={onClick}>Ver detalhes do evento <ArrowForwardIosOutlinedIcon /></button>
-          </div>
-        </div>
       </div>
       {modalOpen && (
         <AlertDialogModal
@@ -129,7 +129,8 @@ export default function CardEvent({
           setModalOpen={setModalOpen}
           handleDelete={handleDelete}
           handleClose={() => setModalOpen(false)}
-          title="Tem certeza que deseja excluir este evento? A ação não poderá ser desfeita."
+          title="Excluir evento"
+          text="Tem certeza que deseja excluir este evento? A ação não poderá ser desfeita."
         />
       )}
     </div>

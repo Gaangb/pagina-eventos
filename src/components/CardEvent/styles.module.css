@@ -1,6 +1,6 @@
 .container_geral {
   width: 24vw;
-  height: 22vh;
+  height: 20vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,20 +11,19 @@
 }
 
 .container_imagem_titulo > div{
-  height: 16vh;
+  height: 14vh;
+  width: 48%;
+  margin: 0 0 6px 10px;
 }
 
 .container_imagem_titulo > div > img {
-  height: 80%;
-  margin-top: 10px;
+  height: 100%;
+  width: 100%;
 }
 
 .container_geral > div:first-of-type {
   display: flex;
-  justify-content: space-around;
   width: 100%;
-  align-items: center;
-  margin: 0px 10px;
 }
 
 .container_titulo {
@@ -32,6 +31,53 @@
   flex-direction: column;
   justify-content: space-around;
   margin-left: 10px;
+}
+
+.container_titulo > div  {
+  background-color: transparent;
+  color: rgba(71, 38, 71);
+  border: none;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  
+  /* height: 20px; */
+}
+
+.container_titulo > p {
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  font-size: .72rem;
+}
+
+.container_titulo > div > button {
+  background-color: transparent;
+  color: rgba(71, 38, 71);
+  border: none;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  height: 20px;
+  font-size: .72rem;
+}
+
+.container_titulo > div > svg {
+  margin-right: 6px;
+}
+
+.container_titulo > div > button:hover {
+  color: rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.container_titulo > div > button > svg:last-child {
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+.container_titulo > button > svg:first-child {
+  margin-right: 4px;
 }
 
 .card_footer {
@@ -50,42 +96,24 @@
   width: 75%;
 }
 
-.card_footer > div:last-of-type > button {
-  background-color: transparent;
-  color: rgba(71, 38, 71);
-  border: none;
-  display: flex;
-  cursor: pointer;
-  justify-content: center;
-  align-items: center;
-
-  height: 20px;
-}
-
-.card_footer > div:last-of-type > button:hover {
-  color: rgba(255, 255, 255, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-.card_footer > div:last-of-type > button > svg {
-  font-size: 14px;
-  margin-left: 4px;
-}
-
 .card_footer_buttons {
   display: flex;
   justify-content: space-between;
 }
 
 .card_footer_buttons > button {
-  height: 15px;
+  height: 20px;
   width: 30px;
+}
+
+.card_footer_buttons > button:hover {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .container_geral > div:last-child {
   display: flex;
   justify-content: flex-start;
-  margin-left: 16px;
+  margin-left: 2vw;
   width: 100%;
 }
 
