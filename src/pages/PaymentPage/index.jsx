@@ -1,19 +1,66 @@
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import QRCode from "qrcode.react";
-import styles from "./styles.module.css";
-import { useEffect, useState } from "react";
+
+import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
+import styles from "./styles.module.css";
+
 export function PaymentPage() {
+  const { setEventos, eventos } = useEventsBuilder();
   const location = useLocation();
+
   const purshaseDetails = location.state.purshaseDetails;
   const [timeLeft, setTimeLeft] = useState(330); // 5 minutos e 30 segundos em segundos
+  const [codigoPagamento, setCodigoPagamento] = useState(null);
+
   const [meuIngresso, setMeuIngresso] = useState({
     evento: purshaseDetails.evento,
     Nome: "",
     Cpf: "",
     Email: "",
   });
+
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+  const formattedTime = `${String(minutes).padStart(2, "0")}:${String(
+    seconds
+  ).padStart(2, "0")}`;
+
+  const handleBuyTickets = (e) => {
+    e.preventDefault();
+    if(meuIngresso.Cpf.length < 11){
+      alert("CPF/CNPJ inválido")
+      return
+    } else if(meuIngresso.Email === ""){
+      alert("Email inválido")
+      return
+    } else if(meuIngresso.Nome === ""){
+      alert("Nome inválido")
+      return
+    } else {
+      alert("Ingresso vendido com sucesso");
+    }
+    setEventos((prevEventos) =>
+      prevEventos.map((event) => {
+        if (event.id === purshaseDetails.event_id) {
+          console.log("event", event);
+          event.ingressos_camarote -= purshaseDetails.quantityCamarote;
+          event.ingressos_pista -= purshaseDetails.quantityPista;
+        }
+        return event;
+      })
+    );
+    setCodigoPagamento(
+      
+        meuIngresso.Cpf +
+        meuIngresso.Nome +
+        meuIngresso.Email +
+        meuIngresso.evento
+    );
+    localStorage.setItem("eventos", JSON.stringify(eventos));
+  };
 
   useEffect(() => {
     const myTimeout = setInterval(() => {
@@ -29,16 +76,6 @@ export function PaymentPage() {
     return () => clearInterval(myTimeout);
   }, []);
 
-  const minutes = Math.floor(timeLeft / 60);
-  const seconds = timeLeft % 60;
-  const formattedTime = `${String(minutes).padStart(2, "0")}:${String(
-    seconds
-  ).padStart(2, "0")}`;
-
-  const [codigoPagamento, setCodigoPagamento] = useState(
-    "jxllksdf1334jfkal1231l4fjd"
-  );
-
   return (
     <div className={styles.container_geral}>
       <div className={styles.container_content}>
@@ -48,20 +85,35 @@ export function PaymentPage() {
         <div className={styles.content_details}>
           <div>
             <h3>Preencha os campos abaixo e efetue o pagamento</h3>
-            <form action="" className={styles.form_geral}>
+            <form action="submit" className={styles.form_geral}>
               <div className={styles.form_top}>
                 <div>
                   <label htmlFor="">Nome Completo</label>
-                  <input type="text" />
+                  <input
+                    type="text"
+                    onChange={(e) =>
+                      setMeuIngresso({ ...meuIngresso, Nome: e.target.value })
+                    }
+                  />
                 </div>
                 <div>
                   <label htmlFor="">CPF</label>
-                  <input type="text" />
+                  <input
+                    type="text"
+                    onChange={(e) =>
+                      setMeuIngresso({ ...meuIngresso, Cpf: e.target.value })
+                    }
+                  />
                 </div>
               </div>
               <div className={styles.form_bottom}>
                 <label htmlFor="">Email</label>
-                <input type="text" />
+                <input
+                  type="text"
+                  onChange={(e) =>
+                    setMeuIngresso({ ...meuIngresso, Email: e.target.value })
+                  }
+                />
               </div>
             </form>
           </div>
@@ -81,7 +133,9 @@ export function PaymentPage() {
               <div className={styles.content_payment_bottom}>
                 <p>Total </p>
                 <p>R${purshaseDetails.payment},00</p>
-                <button type="submit">Efetuar pagamento</button>
+                <button type="submit" onClick={(e) => handleBuyTickets(e)}>
+                  Efetuar pagamento
+                </button>
               </div>
             </div>
             <div className={styles.payment_timer}>
@@ -99,7 +153,7 @@ export function PaymentPage() {
             </div>
           </div>
         </div>
-        {
+        {codigoPagamento ? (
           <div className={styles.container_content_qrcode}>
             <div>
               <h2>Utilize o QR Code abaixo para efetuar o pagamento</h2>
@@ -128,7 +182,9 @@ export function PaymentPage() {
               </div>
             </div>
           </div>
-        }
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
