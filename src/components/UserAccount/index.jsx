@@ -21,20 +21,6 @@ export function UserAccount() {
     imagem: "",
   });
 
-  useEffect(() => {
-    if (loggedInUserJSON) {
-      setCadastro({
-        id: loggedInUserJSON.id,
-        nome: loggedInUserJSON.nome,
-        cpf: loggedInUserJSON.cpf,
-        nome_estabelecimento: loggedInUserJSON.nome_estabelecimento,
-        email: loggedInUserJSON.email,
-        senha: "",
-        imagem: loggedInUserJSON.imagem,
-      });
-    }
-  }, []);
-
   const onConfirmButtonClick = (e) => {
     e.preventDefault();
   
@@ -46,22 +32,60 @@ export function UserAccount() {
       localStorage.setItem('usuarios', JSON.stringify(updateUsuario));
   
       toast.success("Conta atualizada com sucesso");
-  
+      setCadastro(updateUsuario.find((user) => user.id === cadastro.id));
+      console.log('updateUsuario', updateUsuario)
+      console.log('cadastro 1', cadastro)
+      setTimeout(() => {
+        window.location.reload();
+      },1000)
       return;
+    } else {
+      toast.error("Senha Incorreta");
     }
-  
-    toast.error("Senha Incorreta");
   };
 
+  console.log('cadastro', cadastro)
   const onDeleteAccount = (id) => {
     setModalOpen(!modalOpen);
     setUsuarioToDeleteId(id);
+  }
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setCadastro({ ...cadastro, imagem: reader.result });
+    }
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   }
 
   const deleteAccount = () => {
     deleteUser(usuarioToDeleteId);
     toast.success("Conta deletada com sucesso");
   }
+
+  const handleImageDelete = (e) => {
+    e.preventDefault();
+    setCadastro({ ...cadastro, imagem: "https://cdn-icons-png.flaticon.com/512/149/149071.png" });
+  }
+
+  useEffect(() => {
+    if (loggedInUserJSON) {
+      setCadastro({
+        id: loggedInUserJSON.id,
+        nome: loggedInUserJSON.nome,
+        cpf: loggedInUserJSON.cpf,
+        nome_estabelecimento: loggedInUserJSON.nome_estabelecimento,
+        email: loggedInUserJSON.email,
+        senha: cadastro.senha,
+        imagem: loggedInUserJSON.imagem,
+      });
+    }
+  }, []);
 
   return (
     <div className={styles.container_content}>
@@ -77,18 +101,20 @@ export function UserAccount() {
             <img src={cadastro.imagem} alt="" />
             <input
               type="file"
-              id="myFile"
-              name="filename"
+              id="uploadImage"
+              name="uploadImage"
               style={{ display: "none" }}
+              onChange={handleImageUpload}
             />
-            <label htmlFor="myFile">upload imagem</label>
+            <label htmlFor="uploadImage">Upload imagem</label>
             <input
-              type="file"
-              id="myFile"
-              name="filename"
+              type="button"
+              id="delete"
+              name="delete"
               style={{ display: "none" }}
+              onClick={handleImageDelete}
             />
-            <label htmlFor="myFile">Remover imagem</label>
+            <label htmlFor="delete">Remover imagem</label>
           </div>
 
           <div className={styles.flex_row}>
@@ -163,9 +189,9 @@ export function UserAccount() {
                 }
               />
             </div>
-            <div className={styles.button_Confirm}>
+            <div className={styles.button_confirm}>
               <button type="button" onClick={() => onDeleteAccount(cadastro.id)}>Excluir conta</button>
-              <button type="submit">Confirmar Mudanças</button>
+              <button type="submit">Salvar</button>
             </div>
           </div>
         </form>
@@ -176,6 +202,8 @@ export function UserAccount() {
           setModalOpen={setModalOpen}
           handleDelete={deleteAccount}
           handleClose={() => setModalOpen(false)}
+          title="Excluir conta"
+          text="Tem certeza que deseja excluir sua conta? A ação não poderá ser desfeita."
         />)}
     </div>
   );
