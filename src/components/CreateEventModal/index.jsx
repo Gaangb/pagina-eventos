@@ -6,7 +6,7 @@ import { InputForm } from "../InputForm";
 import 'react-toastify/dist/ReactToastify.css';
 import styles from "./styles.module.css";
 
-export function CreateEvent() {
+export function CreateEventModal() {
   const { eventos, setEventos, toggleForm, currentEvent, setCurrentEvent } =
     useEventsBuilder();
 
@@ -36,7 +36,7 @@ export function CreateEvent() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  
+
     if (currentEvent.id) {
       // Atualização de evento existente
       if (cadastroEvento.imagem instanceof File) {
@@ -99,7 +99,7 @@ export function CreateEvent() {
         toast.success("Evento criado com sucesso");
       };
     }
-  
+
     setCadastroEvento({
       nome: "",
       usuarioId: 0,
@@ -127,7 +127,6 @@ export function CreateEvent() {
       ingressos_camarote: 0,
     });
   };
-  
 
   const handleDateChange = (e) => {
     const inputDate = new Date(e.target.value);
