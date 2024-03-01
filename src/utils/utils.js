@@ -265,9 +265,9 @@ export function formatDateForInput(dateString) {
   return `${year}-${month}-${day}`;
 }
 
-// Lógica para data mínima e máxima permitida para criação de evento
 const today = new Date();
 export const minDate = new Date();
-minDate.setDate(today.getDate() + 2);
 export const maxDate = new Date();
 maxDate.setFullYear(today.getFullYear() + 1);
+maxDate.setMonth(11); // Dezembro
+maxDate.setDate(31); // Último dia do mês

@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
-import { formatDateForInput, loggedInUserJSON, minDate, maxDate } from "../../utils/utils";
+import { loggedInUserJSON, minDate, maxDate } from "../../utils/utils";
+import moment from "moment";
 import { InputForm } from "../InputForm";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./styles.module.css";
 
 export function CreateEventModal() {
   const { eventos, setEventos, toggleForm, currentEvent, setCurrentEvent } =
     useEventsBuilder();
 
+  const [selectedDate, setSelectedDate] = useState("");
   const [cadastro, setCadastro] = useState({
     id: 0,
     nome: "",
@@ -94,7 +96,10 @@ export function CreateEventModal() {
           ingressos_camarote: cadastroEvento.ingressos_camarote,
         };
         setEventos((prevEventos) => [...prevEventos, novoEvento]);
-        localStorage.setItem("eventos", JSON.stringify([...eventos, novoEvento]));
+        localStorage.setItem(
+          "eventos",
+          JSON.stringify([...eventos, novoEvento])
+        );
         toggleForm(event);
         toast.success("Evento criado com sucesso");
       };
@@ -129,16 +134,18 @@ export function CreateEventModal() {
   };
 
   const handleDateChange = (e) => {
-    const inputDate = new Date(e.target.value);
-    const currentDate = new Date();
-    currentDate.setDate(currentDate.getDate() + 2);
+    const minDateValue = moment().add(1, "days");
+    const inputDate = moment(e.target.value);
+    const formattedDate = inputDate.format("YYYY-MM-DD");
 
-    if (inputDate < currentDate) {
+    if (inputDate.isBefore(minDateValue)) {
       alert(
-        "A data do evento deve ser pelo menos dois dias após a data atual."
+        "A data do evento deve ser pelo menos dois dias após a data atual e no formato correto."
       );
+      return;
     } else {
-      setCadastroEvento({ ...cadastroEvento, data: e.target.value });
+      setSelectedDate(formattedDate);
+      setCadastroEvento({ ...cadastroEvento, data: formattedDate });
     }
   };
 
@@ -168,7 +175,7 @@ export function CreateEventModal() {
       ingressos_pista: 0,
       ingressos_camarote: 0,
     });
-  }
+  };
 
   useEffect(() => {
     setCadastroEvento({
@@ -190,7 +197,6 @@ export function CreateEventModal() {
     }
   }, []);
 
-  console.log(currentEvent.imagem)
   return (
     <div className={styles.container_create_event_page}>
       <form
@@ -200,9 +206,7 @@ export function CreateEventModal() {
         encType="multipart/form-data"
       >
         <div className={styles.form_titulo_create_event_page}>
-          {!currentEvent.id
-          ? <h1>Criar evento</h1>
-          : <h1>Atualizar evento</h1>}
+          {!currentEvent.id ? <h1>Criar evento</h1> : <h1>Atualizar evento</h1>}
         </div>
         <div className={styles.form_create_event_page}>
           <div>
@@ -273,9 +277,9 @@ export function CreateEventModal() {
               <label htmlFor="data">Data do evento</label>
               <input
                 required
-                min={minDate.toISOString().split('T')[0]}
-                max={maxDate.toISOString().split('T')[0]}
-                value={formatDateForInput(cadastroEvento.data)}
+                min={minDate.toISOString().split("T")[0]}
+                max={maxDate.toISOString().split("T")[0]}
+                value={selectedDate}
                 className={styles.input_create_event}
                 type="date"
                 name="data"
