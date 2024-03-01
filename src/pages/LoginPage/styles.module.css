@@ -67,6 +67,7 @@ button {
   font-weight: 400;
   margin-bottom: 20px;
   cursor: pointer;
+  margin-right: 0px;
 }
 
 .form_login_page div:first-of-type {
