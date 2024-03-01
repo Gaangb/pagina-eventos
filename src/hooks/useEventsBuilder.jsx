@@ -19,6 +19,8 @@ const EventContext = createContext();
 
 export function EventProvider({ children }) {
   const [currentEvent, setCurrentEvent] = useState({});
+  const [filteredEvents, setFilteredEvents] = useState([]);
+  const [isFiltered, setIsFiltered] = useState(false);
   const [showNavbar, setShowNavbar] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState({});
@@ -119,6 +121,8 @@ export function EventProvider({ children }) {
         currentEvent,
         customClassNavBar,
         eventos,
+        filteredEvents,
+        isFiltered,
         isLogged,
         loggedInUser,
         loggedInUserJSON: localStorage.getItem("loggedInUser"),
@@ -128,18 +132,20 @@ export function EventProvider({ children }) {
         usuarios,
         openEventsDetails,
         showNavbar,
-        setCurrentEvent,
-        setUsuarios,
-        setEventos,
-        setShowForm,
-        toggleForm,
-        setIsLogged,
-        handleLogOut,
         setCustomClassNavBar,
+        setCurrentEvent,
+        setEventos,
+        setFilteredEvents,
+        setIsFiltered,
+        setIsLogged,
         setShowComponentsUserPage,
+        setShowForm,
+        setShowNavbar,
+        setUsuarios,
+        toggleForm,
+        handleLogOut,
         deleteEvent,
         deleteUser,
-        setShowNavbar,
       }}
     >
       {children}
