@@ -1,0 +1,24 @@
+(x) ResetPage -> quando o usuário for resetar a senha deve salvar a nova senha no local storage
+(x) Adicionar toast na tela de reset de senha
+(x) imagem do usuario
+(x) botao sair da tela de usuario
+(x) logica para aparecer qrcode na tela de pagamento
+(x) adicionar toast na tela pagamento
+(x) verificar se há ingressos disponiveis quando for adiquirir
+(x) ajustar tamanho da tela de register
+(x) Ao remover imagem definir imagem padrão
+(x) Fazer a logica da busca
+(x) Corrigir bug1 da data do evento
+(x) Corrigir bug2 da data do evento
+() Não permitir que usuario mude data do evento
+() Lógica para mostrar ingressos esgotados
+() Lógica para notificar compra dono do evento
+() Ajustar telas
+    () 1.1 Tela de pagamento
+    () 1.2 Tela de configurações do usuário
+    () 1.2 Tela de "Meus Eventos"
+
+Se der tempo
+() Notificar usuário sobre as venda
+() Tela do financeiro
+() Ao excluir uma conta deletar todos os eventos que tem o id daquela conta
