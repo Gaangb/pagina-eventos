@@ -17,7 +17,7 @@
   color: rgba(238, 130, 238);
 }
 
-button {
+.container_navbar_events_page > button {
   background-color: transparent;
   border: none;
   font-size: 16px;

@@ -15,9 +15,9 @@ export function NavBar() {
     showForm,
     customClassNavBar,
     showNavbar,
-    filteredEvents,
     setFilteredEvents,
     setIsFiltered,
+    setShowComponentEventNotFound,
   } = useEventsBuilder();
 
   const handleCreateEventModal = (e) => {
@@ -26,15 +26,29 @@ export function NavBar() {
 
   const onInputChange = (e) => {
     const value = e.target.value.toLowerCase();
+    let eventNotFound =
+      eventos.filter((event) => event.nome.toLowerCase().includes(value))
+        .length === 0;
+
     if (!value.trim()) {
       setFilteredEvents(eventos);
+      setIsFiltered(false);
+      setShowComponentEventNotFound(false);
+
+      return;
+    }
+
+    if (eventNotFound) {
+      setShowComponentEventNotFound(true);
       return;
     }
 
     const filteredEvents = eventos.filter((event) => {
       return event.nome.toLowerCase().includes(value);
     });
+
     setIsFiltered(true);
+    setShowComponentEventNotFound(false);
     setFilteredEvents(filteredEvents);
   };
 
