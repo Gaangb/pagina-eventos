@@ -5,9 +5,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    volumes:
+      # - ./node_modules:/app/node_modules
+      - .:/app
     ports:
       - "3000:3000"
-    volumes:
-      - .:/usr/src/app
     environment:
       NODE_ENV: development
+    networks:
+    - dev_network
+
+networks:
+  dev_network:
+    name: dev_network
