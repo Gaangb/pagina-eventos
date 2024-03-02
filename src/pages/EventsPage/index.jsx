@@ -1,13 +1,22 @@
 import { useEffect } from "react";
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 
+import { NotFound } from "../../components/NotFound";
+
 import CardEvent from "../../components/CardEvent";
-import styles from "./styles.module.css";
 import CelebrationOutlinedIcon from "@mui/icons-material/CelebrationOutlined";
+import styles from "./styles.module.css";
 
 export function EventsPage() {
-  const { eventos, setEventos, openEventsDetails, setShowNavbar, isFiltered, filteredEvents, setFilteredEvents, setIsFiltered } =
-    useEventsBuilder();
+  const {
+    eventos,
+    showComponentEventNotFound,
+    setEventos,
+    openEventsDetails,
+    setShowNavbar,
+    isFiltered,
+    filteredEvents,
+  } = useEventsBuilder();
 
   useEffect(() => {
     if (eventos.length) {
@@ -21,7 +30,7 @@ export function EventsPage() {
     setEventos(eventosLocalStorage);
   }, []);
 
-  const renderEvents  = isFiltered ? filteredEvents : eventos;
+  const renderEvents = isFiltered ? filteredEvents : eventos;
 
   return (
     <section className={styles.container_geral_events_page}>
@@ -30,17 +39,21 @@ export function EventsPage() {
           <CelebrationOutlinedIcon />
           Todos os eventos
         </h1>
-        <div className={styles.container_cards_events_page}>
-          {renderEvents.map((event, index) => (
-            <CardEvent
-              key={index}
-              {...event}
-              onClick={() => {
-                openEventsDetails({ ...event });
-              }}
-            />
-          ))}
-        </div>
+        {showComponentEventNotFound ? (
+          <NotFound />
+        ) : (
+          <div className={styles.container_cards_events_page}>
+            {renderEvents.map((event, index) => (
+              <CardEvent
+                key={index}
+                {...event}
+                onClick={() => {
+                  openEventsDetails({ ...event });
+                }}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

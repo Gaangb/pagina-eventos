@@ -1,0 +1,11 @@
+.not_found_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+}
+
+.not_found_container img {
+  width: 100px;
+}
