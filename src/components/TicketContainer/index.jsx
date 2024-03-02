@@ -4,9 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import styles from "./styles.module.css";
 import QuantityInput from "../QuantityInput";
-import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 export function PaymentContainer({ preco_pista, preco_camarote, evento }) {
-  const { eventos } = useEventsBuilder();
   const navigate = useNavigate();
   const [purshaseDetails, setPurshaseDetails] = useState({
     event_id: evento.id,
@@ -25,6 +23,7 @@ export function PaymentContainer({ preco_pista, preco_camarote, evento }) {
     });
   };
 
+  console.log(purshaseDetails);
   const handleQuantityChangeCamarote = (newQuantity) => {
     setPurshaseDetails({
       ...purshaseDetails,
@@ -33,14 +32,7 @@ export function PaymentContainer({ preco_pista, preco_camarote, evento }) {
   };
 
   const handleBuyTickets = () => {
-    if (
-      evento.ingressos_camarote < purshaseDetails.quantityCamarote || evento.ingressos_pista < purshaseDetails.quantityPista
-    ){
-      alert("Quantidade indisponível")
-    }else{
-      navigate("/pagamento", { state: { purshaseDetails } });
-      
-    }
+    navigate("/pagamento", { state: { purshaseDetails } });
   };
 
   useEffect(() => {
@@ -51,7 +43,6 @@ export function PaymentContainer({ preco_pista, preco_camarote, evento }) {
       ...purshaseDetails,
       payment: total,
     });
-
   }, [purshaseDetails.quantityPista, purshaseDetails.quantityCamarote]);
 
   return (
@@ -65,14 +56,32 @@ export function PaymentContainer({ preco_pista, preco_camarote, evento }) {
             <p className={styles.content_prices_title}>Pista </p>
             <p>R${preco_pista},00</p>
           </div>
-          <QuantityInput onQuantityChange={handleQuantityChangePista} />
+          {purshaseDetails.total_pista === 0 ? (
+            <p className={styles.content_prices_title_disabled}>Esgotado</p>
+          ) : (
+            <QuantityInput
+              disabled={
+                evento.ingressos_pista === purshaseDetails.quantityPista
+              }
+              onQuantityChange={handleQuantityChangePista}
+            />
+          )}
         </div>
         <div className={styles.content_prices}>
           <div>
             <p className={styles.content_prices_title}>Camarote </p>
             <p>R${preco_camarote},00</p>
           </div>
-          <QuantityInput onQuantityChange={handleQuantityChangeCamarote} />
+          {purshaseDetails.total_camarote === 0 ? (
+            <p className={styles.content_prices_title_disabled}>Esgotado</p>
+          ) : (
+            <QuantityInput
+              disabled={
+                evento.ingressos_camarote === purshaseDetails.quantityCamarote
+              }
+              onQuantityChange={handleQuantityChangeCamarote}
+            />
+          )}
         </div>
         {purshaseDetails.quantityCamarote || purshaseDetails.quantityPista ? (
           <div>
