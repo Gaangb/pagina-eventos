@@ -46,7 +46,7 @@
     background-color: transparent;
     border: none;
     border-bottom: 2px solid white;
-    font-size: 20px;
+    font-size: 16px;
     color: white;
     outline: none;
     margin: auto;
@@ -68,6 +68,22 @@
 
 .container_input > label {
     margin-bottom: 10px;
+}
+
+.container_input > div {
+    display: flex;
+    justify-content: space-between;
+    cursor: not-allowed;
+    border-bottom: 2px solid white;
+    font-size: 16px;
+}
+
+.container_input > div > p {
+    font-size: 16px;
+}
+
+.container_input > div > svg {
+    color: black;
 }
 
 .container_description{
@@ -112,11 +128,15 @@
     
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 440px) {
     .form_geral_create_event_page{
-        height: 72%;
+       height: 60%;
     }
 
+    .form_titulo_create_event_page{
+        margin-bottom: 10px;
+        
+    }
     .form_titulo_create_event_page > h1 {
         font-size: 22px;
     }
