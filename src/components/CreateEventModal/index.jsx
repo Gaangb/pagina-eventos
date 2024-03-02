@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import moment from "moment";
+
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 import { loggedInUserJSON, minDate, maxDate } from "../../utils/utils";
-import moment from "moment";
 import { InputForm } from "../InputForm";
-import "react-toastify/dist/ReactToastify.css";
+
+import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import styles from "./styles.module.css";
+import "react-toastify/dist/ReactToastify.css";
 
 export function CreateEventModal() {
   const { eventos, setEventos, toggleForm, currentEvent, setCurrentEvent } =
@@ -275,18 +278,25 @@ export function CreateEventModal() {
           <div>
             <div className={styles.container_input}>
               <label htmlFor="data">Data do evento</label>
-              <input
-                required
-                min={minDate.toISOString().split("T")[0]}
-                max={maxDate.toISOString().split("T")[0]}
-                value={selectedDate}
-                className={styles.input_create_event}
-                type="date"
-                name="data"
-                id=""
-                onChange={handleDateChange}
-                onKeyDown={(e) => e.preventDefault()}
-              />
+              {!currentEvent.id  ? (
+                <input
+                  required
+                  min={minDate.toISOString().split("T")[0]}
+                  max={maxDate.toISOString().split("T")[0]}
+                  value={selectedDate}
+                  className={styles.input_create_event}
+                  type="date"
+                  name="data"
+                  id=""
+                  onChange={handleDateChange}
+                  onKeyDown={(e) => e.preventDefault()}
+                />
+              ) : (
+                <div>
+                  <p>{new Date(currentEvent.data).toLocaleDateString()}</p>
+                  <CalendarMonthOutlinedIcon />
+                </div>
+              )}
             </div>
             <div className={styles.container_input}>
               <label htmlFor="horario">Horario do evento</label>
