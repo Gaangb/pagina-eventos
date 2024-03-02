@@ -23,32 +23,31 @@ export function UserAccount() {
 
   const onConfirmButtonClick = (e) => {
     e.preventDefault();
-  
+
     if (loggedInUserJSON.senha === cadastro.senha) {
-      const updateUsuario = usuarios.map((user) => (user.id === cadastro.id ? cadastro : user));
-  
+      const updateUsuario = usuarios.map((user) =>
+        user.id === cadastro.id ? cadastro : user
+      );
+
       setUsuarios(updateUsuario);
-      localStorage.setItem('loggedInUser', JSON.stringify(cadastro));
-      localStorage.setItem('usuarios', JSON.stringify(updateUsuario));
-  
+      localStorage.setItem("loggedInUser", JSON.stringify(cadastro));
+      localStorage.setItem("usuarios", JSON.stringify(updateUsuario));
+
       toast.success("Conta atualizada com sucesso");
       setCadastro(updateUsuario.find((user) => user.id === cadastro.id));
-      console.log('updateUsuario', updateUsuario)
-      console.log('cadastro 1', cadastro)
       setTimeout(() => {
         window.location.reload();
-      },1000)
+      }, 1000);
       return;
     } else {
       toast.error("Senha Incorreta");
     }
   };
 
-  console.log('cadastro', cadastro)
   const onDeleteAccount = (id) => {
     setModalOpen(!modalOpen);
     setUsuarioToDeleteId(id);
-  }
+  };
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -56,22 +55,25 @@ export function UserAccount() {
 
     reader.onloadend = () => {
       setCadastro({ ...cadastro, imagem: reader.result });
-    }
+    };
 
     if (file) {
       reader.readAsDataURL(file);
     }
-  }
+  };
 
   const deleteAccount = () => {
     deleteUser(usuarioToDeleteId);
     toast.success("Conta deletada com sucesso");
-  }
+  };
 
   const handleImageDelete = (e) => {
     e.preventDefault();
-    setCadastro({ ...cadastro, imagem: "https://cdn-icons-png.flaticon.com/512/149/149071.png" });
-  }
+    setCadastro({
+      ...cadastro,
+      imagem: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+    });
+  };
 
   useEffect(() => {
     if (loggedInUserJSON) {
@@ -90,7 +92,11 @@ export function UserAccount() {
   return (
     <div className={styles.container_content}>
       <div className={styles.container_form}>
-        <form action="submit" onSubmit={onConfirmButtonClick} className={styles.form_geral}>
+        <form
+          action="submit"
+          onSubmit={onConfirmButtonClick}
+          className={styles.form_geral}
+        >
           <div className={styles.container_titulo}>
             <h1>
               <SettingsIcon />
@@ -190,7 +196,12 @@ export function UserAccount() {
               />
             </div>
             <div className={styles.button_confirm}>
-              <button type="button" onClick={() => onDeleteAccount(cadastro.id)}>Excluir conta</button>
+              <button
+                type="button"
+                onClick={() => onDeleteAccount(cadastro.id)}
+              >
+                Excluir conta
+              </button>
               <button type="submit">Salvar</button>
             </div>
           </div>
@@ -203,8 +214,9 @@ export function UserAccount() {
           handleDelete={deleteAccount}
           handleClose={() => setModalOpen(false)}
           title="Excluir conta"
-          text="Tem certeza que deseja excluir sua conta? A ação não poderá ser desfeita."
-        />)}
+          text="Tem certeza que deseja excluir sua conta? A ação apagará todos os eventos vinculados à conta e não poderá ser desfeita."
+        />
+      )}
     </div>
   );
 }

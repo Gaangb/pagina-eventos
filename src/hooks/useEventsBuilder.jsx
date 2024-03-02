@@ -18,13 +18,15 @@ import logo from "../assets/logo_login.png";
 const EventContext = createContext();
 
 export function EventProvider({ children }) {
+  const navigate = useNavigate();
   const [currentEvent, setCurrentEvent] = useState({});
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
   const [showNavbar, setShowNavbar] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState({});
-  const navigate = useNavigate();
+  const [showComponentEventNotFound, setShowComponentEventNotFound] =
+    useState(false);
   const [showForm, setShowForm] = useState(false);
 
   const [customClassNavBar, setCustomClassNavBar] = useState(
@@ -77,6 +79,11 @@ export function EventProvider({ children }) {
   const deleteUser = useCallback(
     (id) => {
       const updatedUsers = usuarios.filter((user) => user.id !== id);
+      const deletEventsForThisUser = eventos.filter(
+        (event) => event.usuarioId !== id
+      );
+
+      localStorage.setItem("eventos", JSON.stringify(deletEventsForThisUser));
       setUsuarios(updatedUsers);
       localStorage.setItem("usuarios", JSON.stringify(updatedUsers));
 
@@ -127,6 +134,7 @@ export function EventProvider({ children }) {
         loggedInUser,
         loggedInUserJSON: localStorage.getItem("loggedInUser"),
         showComponentsUserPage,
+        showComponentEventNotFound,
         showForm,
         showLogo,
         usuarios,
@@ -139,6 +147,7 @@ export function EventProvider({ children }) {
         setIsFiltered,
         setIsLogged,
         setShowComponentsUserPage,
+        setShowComponentEventNotFound,
         setShowForm,
         setShowNavbar,
         setUsuarios,
