@@ -27,6 +27,10 @@
   padding-top: 10px;
 }
 
+.container_events_page > h1 > svg {
+  margin-right: 10px;
+}
+
 .container_cards_events_page {
   display: grid;
   grid-template-columns: 3fr 3fr 3fr;
@@ -36,6 +40,21 @@
   height: 80vh;
   overflow-y: auto;
   padding-bottom: 10px;
+}
+
+.container_cards_events_page::-webkit-scrollbar {
+  width: 14px; /* Largura da barra de rolagem */
+}
+
+.container_cards_events_page::-webkit-scrollbar-thumb {
+  background-color: #EE82EE; /* Cor da frente */
+  border-radius: 20px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); /* Adiciona um efeito de sombra para criar a ilusão de uma largura menor */
+}
+
+.container_cards_events_page::-webkit-scrollbar-track {
+  background-color: #472647; /* Cor do fundo */
+  border-radius: 20px;
 }
 
 @media screen and (max-width: 768px) {
@@ -51,5 +70,9 @@
 
   .container_events_page > h1 {
     font-size: 30px;
+  }
+
+  .container_cards_events_page::-webkit-scrollbar {
+    width: 6px; /* Largura da barra de rolagem */
   }
 }
