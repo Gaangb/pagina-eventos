@@ -93,3 +93,33 @@
   color: white;
   margin-top: 14px;
 }
+
+@media screen and (max-width: 440px) {
+  .container_register_page > img {
+    top: 2px;
+    left: 2px;
+  }
+  .form_geral_register_page{
+    min-height: 50vh;
+    margin-top: 20px;
+  }
+
+  .form_titulo_register_page{
+    height: 6vh
+  }
+
+  .form_image{
+    width: 74%;
+  }
+
+  .form_image > img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .form_image > label {
+    padding: 8px;
+    margin-left: 10px;
+    width: 32vw;
+  }
+}

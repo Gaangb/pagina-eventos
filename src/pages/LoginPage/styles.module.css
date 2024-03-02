@@ -98,8 +98,7 @@ button {
 
   .form_geral_login_page {
     width: 90vw;
-    height: 62vh;
-    margin-top: -10px;
+    min-height: 46vh;
   }
 
   .form_titulo_login_page {
