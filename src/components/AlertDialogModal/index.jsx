@@ -6,8 +6,15 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function AlertDialogModal({ hidden, modalOpen, setModalOpen, handleDelete, id, text, title }) {
-
+export default function AlertDialogModal({
+  hidden,
+  modalOpen,
+  setModalOpen,
+  handleDelete,
+  id,
+  text,
+  title,
+}) {
   const handleClose = () => {
     setModalOpen(false);
   };
@@ -26,16 +33,14 @@ export default function AlertDialogModal({ hidden, modalOpen, setModalOpen, hand
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">
-            {title}
-          </DialogTitle>
+          <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
               {text}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button hidden={hidden} onClick={handleClose}>Cancelar</Button>
+            {!hidden && <Button onClick={handleClose}>Cancelar</Button>}
             <Button onClick={handleAgree} autoFocus>
               Confirmar
             </Button>
