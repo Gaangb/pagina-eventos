@@ -3,10 +3,11 @@ import { toast } from "react-toastify";
 import moment from "moment";
 
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
-import { loggedInUserJSON, minDate, maxDate } from "../../utils/utils";
-import { InputForm } from "../InputForm";
+import { loggedInUserJSON } from "../../utils/utils";
+import { ImageInput } from "../ImageInput";
+import { DateInput } from "../DateInput";
+import { FormInput } from "../FormInput";
 
-import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -33,10 +34,10 @@ export function CreateEventModal() {
     horario: "",
     imagem: null,
     descricao: "",
-    preco_pista: 0,
-    preco_camarote: 0,
-    ingressos_pista: 0,
-    ingressos_camarote: 0,
+    preco_pista: '',
+    preco_camarote: '',
+    ingressos_pista: '',
+    ingressos_camarote: '',
   });
 
   const handleSubmit = (event) => {
@@ -116,10 +117,10 @@ export function CreateEventModal() {
       horario: "",
       imagem: null,
       descricao: "",
-      preco_pista: 0,
-      preco_camarote: 0,
-      ingressos_pista: 0,
-      ingressos_camarote: 0,
+      preco_pista: '',
+      preco_camarote: '',
+      ingressos_pista: '',
+      ingressos_camarote: '',
     });
     setCurrentEvent({
       nome: "",
@@ -129,10 +130,10 @@ export function CreateEventModal() {
       horario: "",
       imagem: null,
       descricao: "",
-      preco_pista: 0,
-      preco_camarote: 0,
-      ingressos_pista: 0,
-      ingressos_camarote: 0,
+      preco_pista: '',
+      preco_camarote: '',
+      ingressos_pista: '',
+      ingressos_camarote: '',
     });
   };
 
@@ -173,10 +174,10 @@ export function CreateEventModal() {
       horario: "",
       imagem: null,
       descricao: "",
-      preco_pista: 0,
-      preco_camarote: 0,
-      ingressos_pista: 0,
-      ingressos_camarote: 0,
+      preco_pista: '',
+      preco_camarote: '',
+      ingressos_pista: '',
+      ingressos_camarote: '',
     });
   };
 
@@ -200,6 +201,10 @@ export function CreateEventModal() {
     }
   }, []);
 
+  const handleImageChange = (image) => {
+    setCadastroEvento({ ...cadastroEvento, imagem: image });
+  };
+
   return (
     <div className={styles.container_create_event_page}>
       <form
@@ -213,21 +218,7 @@ export function CreateEventModal() {
         </div>
         <div className={styles.form_create_event_page}>
           <div>
-            <div className={styles.container_input}>
-              <label htmlFor="imagem">Escolha sua imagem</label>
-              <input
-                type="file"
-                name="imagem"
-                accept="image/*"
-                placeholder="Insira a imagem do evento"
-                onChange={(e) =>
-                  setCadastroEvento({
-                    ...cadastroEvento,
-                    imagem: e.target.files[0],
-                  })
-                }
-              />
-            </div>
+            <ImageInput onChange={handleImageChange} />
             <div className={styles.container_input}>
               {cadastroEvento.imagem && (
                 <img
@@ -236,7 +227,7 @@ export function CreateEventModal() {
                       ? cadastroEvento.imagem
                       : URL.createObjectURL(cadastroEvento.imagem)
                   }
-                  alt=""
+                  alt="imagem do evento"
                   className={styles.preview_image}
                 />
               )}
@@ -245,7 +236,7 @@ export function CreateEventModal() {
           <div>
             <div className={styles.container_input}>
               <label htmlFor="nome">Nome do evento</label>
-              <input
+              <FormInput
                 required
                 value={cadastroEvento.nome}
                 className={styles.input_create_event}
@@ -259,7 +250,7 @@ export function CreateEventModal() {
             </div>
             <div className={styles.container_input}>
               <label htmlFor="local">Local do evento</label>
-              <input
+              <FormInput
                 required
                 value={cadastroEvento.local}
                 className={styles.input_create_event}
@@ -277,30 +268,15 @@ export function CreateEventModal() {
           </div>
           <div>
             <div className={styles.container_input}>
-              <label htmlFor="data">Data do evento</label>
-              {!currentEvent.id  ? (
-                <input
-                  required
-                  min={minDate.toISOString().split("T")[0]}
-                  max={maxDate.toISOString().split("T")[0]}
-                  value={selectedDate}
-                  className={styles.input_create_event}
-                  type="date"
-                  name="data"
-                  id=""
-                  onChange={handleDateChange}
-                  onKeyDown={(e) => e.preventDefault()}
-                />
-              ) : (
-                <div>
-                  <p>{new Date(currentEvent.data).toLocaleDateString()}</p>
-                  <CalendarMonthOutlinedIcon />
-                </div>
-              )}
+              <DateInput
+                selectedDate={selectedDate}
+                onChange={handleDateChange}
+                currentEvent={currentEvent}
+              />
             </div>
             <div className={styles.container_input}>
               <label htmlFor="horario">Horario do evento</label>
-              <input
+              <FormInput
                 required
                 value={cadastroEvento.horario}
                 className={styles.input_create_event}
@@ -321,7 +297,7 @@ export function CreateEventModal() {
               <label htmlFor="ingressos_pista">
                 Quantidade ingressos pista
               </label>
-              <input
+              <FormInput
                 value={cadastroEvento.ingressos_pista}
                 className={styles.input_create_event}
                 type="number"
@@ -333,7 +309,7 @@ export function CreateEventModal() {
             </div>
             <div className={styles.container_input}>
               <label htmlFor="preco_pista">Preço ingresso pista</label>
-              <input
+              <FormInput
                 value={cadastroEvento.preco_pista}
                 className={styles.input_create_event}
                 type="number"
@@ -349,24 +325,22 @@ export function CreateEventModal() {
               <label htmlFor="ingressos_camarote">
                 Quantidade ingressos camarote
               </label>
-              <input
+              <FormInput
                 value={cadastroEvento.ingressos_camarote}
                 className={styles.input_create_event}
                 type="number"
                 name="ingressos_camarote"
-                id=""
                 placeholder="100"
                 onChange={handleIngressosChange}
               />
             </div>
             <div className={styles.container_input}>
               <label htmlFor="preco_camarote">Preço ingresso camarote</label>
-              <input
+              <FormInput
                 value={cadastroEvento.preco_camarote}
                 className={styles.input_create_event}
                 type="number"
                 name="preco_camarote"
-                id=""
                 placeholder="R$ 0,00"
                 onChange={handleIngressosChange}
               />
