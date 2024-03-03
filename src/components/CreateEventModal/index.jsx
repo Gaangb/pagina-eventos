@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import moment from "moment";
+import { minDate, maxDate } from "../../utils/utils";
 
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 import { loggedInUserJSON } from "../../utils/utils";
 import { ImageInput } from "../ImageInput";
 import { DateInput } from "../DateInput";
 import { FormInput } from "../FormInput";
+import AlertDialogModal from "../AlertDialogModal";
 
 import styles from "./styles.module.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,6 +17,7 @@ export function CreateEventModal() {
   const { eventos, setEventos, toggleForm, currentEvent, setCurrentEvent } =
     useEventsBuilder();
 
+  const [modalOpen, setModalOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState("");
   const [cadastro, setCadastro] = useState({
     id: 0,
@@ -34,10 +37,10 @@ export function CreateEventModal() {
     horario: "",
     imagem: null,
     descricao: "",
-    preco_pista: '',
-    preco_camarote: '',
-    ingressos_pista: '',
-    ingressos_camarote: '',
+    preco_pista: "",
+    preco_camarote: "",
+    ingressos_pista: "",
+    ingressos_camarote: "",
   });
 
   const handleSubmit = (event) => {
@@ -117,10 +120,10 @@ export function CreateEventModal() {
       horario: "",
       imagem: null,
       descricao: "",
-      preco_pista: '',
-      preco_camarote: '',
-      ingressos_pista: '',
-      ingressos_camarote: '',
+      preco_pista: "",
+      preco_camarote: "",
+      ingressos_pista: "",
+      ingressos_camarote: "",
     });
     setCurrentEvent({
       nome: "",
@@ -130,34 +133,29 @@ export function CreateEventModal() {
       horario: "",
       imagem: null,
       descricao: "",
-      preco_pista: '',
-      preco_camarote: '',
-      ingressos_pista: '',
-      ingressos_camarote: '',
+      preco_pista: "",
+      preco_camarote: "",
+      ingressos_pista: "",
+      ingressos_camarote: "",
     });
   };
 
   const handleDateChange = (e) => {
-    const minDateValue = moment().add(1, "days");
     const inputDate = moment(e.target.value);
     const formattedDate = inputDate.format("YYYY-MM-DD");
 
-    if (inputDate.isBefore(minDateValue)) {
-      alert(
-        "A data do evento deve ser pelo menos dois dias após a data atual e no formato correto."
-      );
-      return;
-    } else {
-      setSelectedDate(formattedDate);
-      setCadastroEvento({ ...cadastroEvento, data: formattedDate });
-    }
+    setSelectedDate(formattedDate);
+    setCadastroEvento({ ...cadastroEvento, data: formattedDate });
   };
 
   const handleIngressosChange = (e) => {
     const { name, value } = e.target;
 
     if (value < 0) {
-      alert("O valor não pode ser menor que 0.");
+      setModalOpen(true);
+      setCadastroEvento((prevState) => ({
+        ...prevState, [name]: '',
+      }))
     } else {
       setCadastroEvento((prevState) => ({ ...prevState, [name]: value }));
     }
@@ -174,10 +172,10 @@ export function CreateEventModal() {
       horario: "",
       imagem: null,
       descricao: "",
-      preco_pista: '',
-      preco_camarote: '',
-      ingressos_pista: '',
-      ingressos_camarote: '',
+      preco_pista: "",
+      preco_camarote: "",
+      ingressos_pista: "",
+      ingressos_camarote: "",
     });
   };
 
@@ -375,6 +373,15 @@ export function CreateEventModal() {
           </div>
         </div>
       </form>
+      {modalOpen && (
+        <AlertDialogModal
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+          hidden={true}
+          title="Ação não permitida"
+          text="O valor não pode ser menor que 0."
+        />
+      )}
     </div>
   );
 }
