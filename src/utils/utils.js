@@ -257,16 +257,11 @@ export const usuariosPredefinidos = [
   },
 ];
 
-export function formatDateForInput(dateString) {
-  const dateObject = new Date(dateString);
-  const year = dateObject.getFullYear();
-  const month = String(dateObject.getMonth() + 1).padStart(2, "0");
-  const day = String(dateObject.getDate() + 1).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-
+//Lógica para o calendário
 const today = new Date();
 export const minDate = new Date();
+minDate.setDate(today.getDate() + 1); //pegando data atual e somando 1 dia
+
 export const maxDate = new Date();
 maxDate.setFullYear(today.getFullYear() + 1);
 maxDate.setMonth(11); // Dezembro
