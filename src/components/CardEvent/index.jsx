@@ -101,7 +101,7 @@ export default function CardEvent({
     <div className={styles.container_geral} >
       <div className={styles.container_imagem_titulo}>
         <div>
-          <img src={imagem} alt="" />
+          <img src={imagem} alt="imagem do evento" />
         </div>
         <div className={styles.container_titulo}>
           <h1>{nome}</h1>
@@ -109,7 +109,7 @@ export default function CardEvent({
             <RoomOutlinedIcon /> {local}
           </p>
           <p>
-            <CalendarMonthOutlinedIcon /> {data} - {horario}{" "}
+            <CalendarMonthOutlinedIcon /> {data} - {horario}
           </p>
           <div>
             <VisibilityIcon />
