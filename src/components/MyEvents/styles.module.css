@@ -22,3 +22,15 @@
     margin-left: 2%;
     align-items: center;
 }
+
+@media screen and (max-width: 440px) {
+    .container_geral{
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .container_content{
+        grid-template-columns: 1fr;
+    }
+    
+}

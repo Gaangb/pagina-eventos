@@ -65,6 +65,10 @@
     justify-content: space-between;
 }
 
+.flex_column > label{
+    font-weight: 700;
+}
+
 .flex_column > input{
     width: 30vw;
     height: 4vh;
@@ -118,4 +122,45 @@
     color: white;
     background-color: red;
     border-radius: 5px;
+}
+
+@media screen and (max-width: 440px) {
+    .container_content{
+        width: 100%;
+        margin-left: 0px;
+    }
+    .form_geral{
+        padding: 30px 10px 10px 10px
+    }
+
+    .container_titulo > h1 {
+        font-size: 20px
+    }
+
+    .flex_row_img{
+        min-width:70%;
+    }
+
+    .flex_row_img > img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .flex_row_img > label{
+        padding: 4px;
+        font-size: 12px
+    }
+
+    .flex_row{
+        flex-direction: column;
+    }
+
+    .flex_column > input{
+        width: 100%;
+        margin: 14px 0px 20px 0px;
+    }
+    
+    .button_confirm{
+        width: 100%;
+    }
 }

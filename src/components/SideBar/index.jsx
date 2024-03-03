@@ -1,14 +1,15 @@
 import { useCallback, useState, useEffect } from "react";
 import { useEventsBuilder } from "../../hooks/useEventsBuilder";
 import { loggedInUserJSON } from "../../utils/utils";
+import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
+import logo from "../../assets/logo.png";
 
 import styles from "./styles.module.css";
 
-export function SideBar() {
+export function SideBar({ isMobile, onClick }) {
   const { setShowComponentsUserPage, handleLogOut } = useEventsBuilder();
   const [selectedButton, setSelectedButton] = useState("UserAccount");
   const [sidebarOpen, setSidebarOpen] = useState(true);
-
   const changeComponente = useCallback((e, buttonName) => {
     e.preventDefault();
     setSelectedButton(buttonName);
@@ -38,7 +39,13 @@ export function SideBar() {
   }, []);
 
   return (
-    <div className={styles.container_geral}>
+    <div className={styles.container_geral} >
+      <div>
+        <img src={logo} alt="logo" onClick={() => (location.href = "/")} />
+        {isMobile && (
+          <button onClick={onClick}><ClearOutlinedIcon /></button>
+        )}
+      </div>
       <div className={styles.container_content}>
         <img src={cadastro.imagem} alt="" />
         <button
