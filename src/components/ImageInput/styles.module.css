@@ -6,3 +6,9 @@
   color: white;
   margin-bottom: 12px;
 }
+
+@media screen and (max-width: 440px) {
+  .container_input > label{
+    font-size: 12px;
+  }
+}

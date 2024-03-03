@@ -48,10 +48,11 @@
     font-weight: 600;
 }
 
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 440px) {
     .container_geral{
         width: 50%;
         position: absolute;
+        z-index: 10;
     }
     .container_geral > div:first-child > button {
         width: 80%;
