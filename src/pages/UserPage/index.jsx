@@ -9,7 +9,7 @@ import styles from "./styles.module.css";
 
 export function UserPage() {
   const isMobile = useMediaQuery({ maxWidth: 767 }); // Define o limite para dispositivos móveis
-  const [sidebarVisible, setSidebarVisible] = useState(true);
+  const [sidebarVisible, setSidebarVisible] = useState( );
   const { showComponentsUserPage, setCustomClassNavBar } = useEventsBuilder();
 
   useEffect(() => {
@@ -31,10 +31,10 @@ export function UserPage() {
   return (
     <div className={styles.container_geral}>
 
-      {sidebarVisible && <SideBar isMobile={isMobile} onClick={toggleSidebar}/>}
+      <SideBar isMobile={isMobile} onClick={toggleSidebar} sidebarVisible={sidebarVisible}/>
       {isMobile && (
         <button onClick={toggleSidebar} className={styles.button_sidebar}>
-          {sidebarVisible ? <DehazeIcon /> : <DehazeIcon />}
+          <DehazeIcon />
         </button>
       )}
       {renderComponent()}
