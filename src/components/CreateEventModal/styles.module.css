@@ -41,18 +41,6 @@
     width: 100%;
 }
 
-.input_create_event {
-    margin: 20px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid white;
-    font-size: 16px;
-    color: white;
-    outline: none;
-    margin: auto;
-    width: 100%;
-}
-
 .container_input {
     display: flex;
     flex-direction: column;
