@@ -1,6 +1,6 @@
 .container_geral {
     background-color: rgba(238, 130, 238);
-    height: 92vh;
+    height: 100vh;
     display: flex;
     width: 100%;
     overflow: hidden;
@@ -96,3 +96,15 @@
     color: white;
     cursor: pointer;
 }
+
+.button_sidebar {
+    /* Adicione estilos conforme necessário */
+    margin: 10px;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    color: rgba(71, 38, 71);
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+  }
