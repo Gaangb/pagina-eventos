@@ -23,7 +23,7 @@ export function PaymentContainer({ preco_pista, preco_camarote, evento }) {
     });
   };
 
-  console.log(purshaseDetails);
+
   const handleQuantityChangeCamarote = (newQuantity) => {
     setPurshaseDetails({
       ...purshaseDetails,

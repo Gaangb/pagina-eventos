@@ -46,7 +46,6 @@ export function PaymentPage() {
     setEventos((prevEventos) =>
       prevEventos.map((event) => {
         if (event.id === purshaseDetails.event_id) {
-          console.log("event", event);
           event.ingressos_camarote -= purshaseDetails.quantityCamarote;
           event.ingressos_pista -= purshaseDetails.quantityPista;
         }

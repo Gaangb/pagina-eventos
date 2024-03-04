@@ -87,7 +87,6 @@ export default function CardEvent({
   const onDeleteButtonClick = (id) => {
     setModalOpen(!modalOpen);
     setEventToDeleteId(id);
-    console.log("deletar", modalOpen);
 
   };
 

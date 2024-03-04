@@ -37,8 +37,7 @@ export function EventProvider({ children }) {
 
   const [usuarios, setUsuarios] = useState(() => {
     const usuariosLocalStorage = JSON.parse(localStorage.getItem("usuarios"));
-    console.log(usuariosLocalStorage);
-
+ 
     if (Array.isArray(usuariosLocalStorage)) {
       const idsLocalStorage = new Set(
         usuariosLocalStorage.map((usuario) => usuario.id)

@@ -19,7 +19,6 @@ export function ResetPage() {
       (user) => user.cpf === credenciais.cpf && user.email === credenciais.email
     );
     setIsRight(usuarioValido);
-    console.log("submit", usuarioValido);
     if (!usuarioValido) {
       toast.error("Credenciais inválidas");
     }

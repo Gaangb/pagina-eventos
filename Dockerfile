@@ -10,19 +10,12 @@ COPY package*.json ./
 # Install dependencies
 RUN npm i
 
-# Install dependencies
-# RUN rm -rf node_modules package-lock.json && npm install
-
 # Copy the rest of the application code to the working directory
 COPY . .
-
-# Build the React app
-# RUN npm run dev
 
 # Expose the port that the app will run on
 EXPOSE 5173
 
 # Define the command to run the application
-# CMD ["npm", "run", "dev"]
 CMD ["./node_modules/.bin/vite", "--host"]
 
