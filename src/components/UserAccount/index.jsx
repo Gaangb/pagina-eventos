@@ -176,9 +176,8 @@ export function UserAccount() {
                 name=""
                 id=""
                 placeholder="Digite seu cpf/cnpj"
-                onChange={(e) =>
-                  setCadastro({ ...cadastro, cpf: e.target.value })
-                }
+                readonly
+                className={styles.input_readonly}
               />
             </div>
           </div>

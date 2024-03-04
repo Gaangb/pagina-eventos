@@ -65,6 +65,10 @@
     justify-content: space-between;
 }
 
+.input_readonly{
+    cursor: not-allowed;
+}
+
 .flex_column > label{
     font-weight: 700;
 }
