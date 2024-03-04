@@ -1,5 +1,5 @@
 # Use the official Node.js image as the base image
-FROM node:18.19-alpine3.18
+FROM node
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -20,7 +20,9 @@ COPY . .
 # RUN npm run dev
 
 # Expose the port that the app will run on
-EXPOSE 3000
+EXPOSE 5173
 
 # Define the command to run the application
-CMD ["npm", "run", "dev"]
+# CMD ["npm", "run", "dev"]
+CMD ["./node_modules/.bin/vite", "--host"]
+
