@@ -9,7 +9,7 @@ import styles from "./styles.module.css";
 
 export function UserPage() {
   const isMobile = useMediaQuery({ maxWidth: 767 }); // Define o limite para dispositivos móveis
-  const [sidebarVisible, setSidebarVisible] = useState( );
+  const [sidebarVisible, setSidebarVisible] = useState(true);
   const { showComponentsUserPage, setCustomClassNavBar } = useEventsBuilder();
 
   useEffect(() => {
