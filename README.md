@@ -20,20 +20,20 @@ Certifique-se de ter os seguintes requisitos instalados em seu ambiente de desen
    ```bash
    docker-compose build
    ```
-
+   
    Isso criará as imagens necessárias no container
-
+   
    ```bash
-    docker-compose run my-react-app npm i
+   docker-compose run my-react-app npm i
    ```
-
+   
    Isso criará a pasta node_modules tanto localmente quanto dentro do container
-
-```bash
-  docker-compose up
-```
-
-Isso executará a aplicação
+   
+   ```bash
+   docker-compose up
+   ```
+   
+   Isso executará a aplicação
 
 ## Testando a Aplicação
 
